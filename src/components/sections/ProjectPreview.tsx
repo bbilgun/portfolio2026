@@ -1,9 +1,9 @@
 "use client";
 
 /**
- * Stand-in for a screenshot: a small pixel phone, since everything in the list
- * is a mobile app. Pure CSS, so there are no image assets to ship, and the
- * screen blocks shift on row hover rather than sitting inert.
+ * Stand-in for a screenshot: a small phone, since everything in the list is a
+ * mobile app. Pure CSS, so there are no image assets to ship, and the screen
+ * blocks shift on row hover rather than sitting inert.
  */
 export function ProjectPreview({ tint }: { tint: string }) {
   return (
