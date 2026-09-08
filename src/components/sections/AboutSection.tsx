@@ -14,7 +14,7 @@ export function AboutSection() {
     <SectionShell id="about" label={t("nav.about")}>
       <div className="space-y-4 text-muted">
         {PARAGRAPHS.map((key) => (
-          <p key={key} className="leading-relaxed">
+          <p key={key} className="text-justify leading-relaxed">
             {t(key)}
           </p>
         ))}

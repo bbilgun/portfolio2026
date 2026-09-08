@@ -157,6 +157,39 @@
     border-color: rgb(var(--line) / 0.08);
   }
 
+  /* Pointer spotlight. Two stacked gradients: a tight core that tracks closely
+     and a wide, very faint halo, which reads as a lamp rather than a flat wash.
+     Coordinates arrive as custom properties from CursorSpotlight. */
+  .cursor-spotlight {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    --spot-x: 50vw;
+    --spot-y: 50vh;
+    --spot-core: 0.13;
+    --spot-halo: 0.05;
+    background:
+      radial-gradient(
+        420px circle at var(--spot-x) var(--spot-y),
+        rgb(var(--accent) / var(--spot-core)),
+        transparent 65%
+      ),
+      radial-gradient(
+        900px circle at var(--spot-x) var(--spot-y),
+        rgb(var(--accent) / var(--spot-halo)),
+        transparent 70%
+      );
+  }
+
+  /* On a near-white page the same alphas vanish, so lift them. */
+  :root:not([data-theme="dark"]) .cursor-spotlight {
+    --spot-core: 0.1;
+    --spot-halo: 0.04;
+  }
+
   .hairline {
     border-color: rgb(var(--line) / 0.08);
   }
@@ -190,7 +223,7 @@
   }
 
   .text-faint {
-    color: rgb(var(--ink) / 0.4);
+    color: rgb(var(--ink) / 0.55);
   }
 
   .text-accent {

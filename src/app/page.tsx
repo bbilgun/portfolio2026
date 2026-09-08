@@ -1,7 +1,10 @@
+import { ContactSection } from "@/components/sections/ContactSection";
 import { CursorRibbon } from "@/components/CursorRibbon";
+import { CursorSpotlight } from "@/components/CursorSpotlight";
 import { ScrollRoad } from "@/components/ScrollRoad";
 import { SideRail } from "@/components/SideRail";
 import { AboutSection } from "@/components/sections/AboutSection";
+import { EducationSection } from "@/components/sections/EducationSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -9,6 +12,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 export default function Home() {
   return (
     <>
+      <CursorSpotlight />
       <CursorRibbon />
       <ScrollRoad />
 
@@ -26,7 +30,9 @@ export default function Home() {
           <main id="content" className="pt-16 lg:w-1/2 lg:py-24">
             <AboutSection />
             <ExperienceSection />
+            <EducationSection />
             <ProjectsSection />
+            <ContactSection />
             <SiteFooter />
           </main>
         </div>

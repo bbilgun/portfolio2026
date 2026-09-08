@@ -8,7 +8,9 @@ import type { TranslationKey } from "@/lib/i18n";
 export const SECTIONS: { id: string; key: TranslationKey }[] = [
   { id: "about", key: "nav.about" },
   { id: "experience", key: "nav.experience" },
+  { id: "education", key: "nav.education" },
   { id: "projects", key: "nav.projects" },
+  { id: "contact", key: "nav.contact" },
 ];
 
 const SECTION_IDS = SECTIONS.map((section) => section.id);
@@ -82,7 +84,15 @@ export function SideRail() {
         </nav>
       </div>
 
-      <div className="mt-10 flex items-center gap-5 lg:mt-0">
+      <div className="mt-10 lg:mt-0">
+        {/* Fills the rail's dead space on tall screens, and says the one thing
+            a visiting recruiter is looking for. */}
+        <p className="mb-5 flex items-center gap-2 mono-label text-faint">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden />
+          {t("hero.status")}
+        </p>
+
+        <div className="flex items-center gap-5">
         <ul className="flex items-center gap-5">
           {SOCIALS.map((social) => (
             <li key={social.label}>
@@ -99,10 +109,11 @@ export function SideRail() {
           ))}
         </ul>
 
-        <span className="ml-auto flex items-center gap-2 lg:ml-4">
-          <LocaleToggle />
-          <ThemeToggle />
-        </span>
+          <span className="ml-auto flex items-center gap-2 lg:ml-4">
+            <LocaleToggle />
+            <ThemeToggle />
+          </span>
+        </div>
       </div>
     </header>
   );

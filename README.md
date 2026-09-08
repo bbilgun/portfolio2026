@@ -6,7 +6,7 @@ Personal portfolio — a bilingual (EN/MN) single page built on Next.js.
 
 - **Next.js 15** (App Router) + **React 19** + **TypeScript**
 - **Tailwind CSS 3** for styling, with the design tokens driven by CSS variables
-- **next/font** for Inter (body), Tinos (display), JetBrains Mono (UI chrome)
+- **next/font** for Inter (body), Space Grotesk (display), JetBrains Mono (UI chrome)
 
 ## Running it
 
@@ -26,6 +26,8 @@ scrolling right column with the content.
 src/
   app/
     layout.tsx           fonts, metadata, providers, no-flash theme script
+    opengraph-image.tsx  link-preview card, generated at build
+    icon.tsx             favicon, generated at build
     page.tsx             split-layout shell
     globals.css          design tokens + surface/row-card utilities
   components/
@@ -39,7 +41,9 @@ src/
       AboutSection.tsx   prose and the tool tag cloud
       ExperienceSection.tsx
       ProjectsSection.tsx
-      ProjectPreview.tsx animated CSS stand-in for a screenshot
+      EducationSection.tsx
+      ContactSection.tsx
+      ProjectPreview.tsx CSS phone standing in for a screenshot
   lib/
     useScrollSpy.ts      drives the rail's active-section indicator
     data/                project list and skills
@@ -85,6 +89,7 @@ project list with its store links, and the skill tags — lives in `src/lib/data
 
 ## Before deploying
 
-- Replace `public/profile.jpg` with a real portrait (2:3 ratio) if a photo is
-  added back to the layout.
-- Check the social links in `src/components/SideRail.tsx`.
+- Set `metadataBase` in `src/app/layout.tsx` to the real domain — the OG card
+  and favicon URLs are resolved against it.
+- Check the social links and contact address in `src/components/SideRail.tsx`
+  and `src/components/sections/ContactSection.tsx`.

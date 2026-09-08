@@ -61,7 +61,7 @@ export const projects: Project[] = [
   },
   {
     id: "wallet",
-    title: "Wallet — MonInvest",
+    title: "Wallet (MonInvest)",
     summaryKey: "work.wallet.summary",
     statusKey: "work.status.shipped",
     links: {
@@ -103,7 +103,7 @@ export const projects: Project[] = [
   },
   {
     id: "fgn",
-    title: "FGN — Fine Gold Nation",
+    title: "FGN: Fine Gold Nation",
     summaryKey: "work.fgn.summary",
     statusKey: "work.status.contributed",
     links: {

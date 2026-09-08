@@ -3,7 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { dictionary, type Locale, type TranslationKey } from "./dictionary";
 
-const STORAGE_KEY = "ihzorig:locale";
+const STORAGE_KEY = "bilguun:locale";
 
 type LocaleContextValue = {
   locale: Locale;

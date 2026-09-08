@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useState } from "rea
 
 export type Theme = "light" | "dark";
 
-const STORAGE_KEY = "ihzorig:theme";
+const STORAGE_KEY = "bilguun:theme";
 
 type ThemeContextValue = {
   theme: Theme;
