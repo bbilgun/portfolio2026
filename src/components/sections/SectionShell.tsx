@@ -1,35 +1,36 @@
 import type { ReactNode } from "react";
 
 /**
- * One section of the scrolling column. The sticky heading only shows below lg,
- * where the side rail's nav is hidden and readers need the label back.
+ * One section of the page. The heading is a numbered marker that lines up with
+ * its stop on the road, so the two read as one navigation system.
  */
 export function SectionShell({
   id,
+  index,
   label,
   children,
 }: {
   id: string;
+  index: string;
   label: string;
   children: ReactNode;
 }) {
   return (
-    <section id={id} aria-label={label} className="mb-20 scroll-mt-16 lg:mb-32 lg:scroll-mt-24">
-      <div className="sticky top-0 z-20 -mx-6 mb-5 bg-[rgb(var(--canvas)/0.85)] px-6 py-5 backdrop-blur lg:sr-only">
-        <h2 className="mono-label">{label}</h2>
-      </div>
-      {children}
+    <section id={id} aria-label={label} className="mb-20 scroll-mt-8 md:mb-28">
+      <h2 className="flex items-center gap-3">
+        <span className="mono-label text-accent">{index}</span>
+        <span className="mono-label text-faint">{label}</span>
+        <span className="h-px flex-1 bg-[rgb(var(--line)/0.12)]" aria-hidden />
+      </h2>
+
+      <div className="mt-6">{children}</div>
     </section>
   );
 }
 
-/** Accent-tinted capsule used for tech tags. */
+/** Square accent chip used for tech tags. */
 export function Tag({ children }: { children: ReactNode }) {
-  return (
-    <li className="rounded-full bg-[rgb(var(--accent)/0.1)] px-3 py-1 font-mono text-[11px] leading-5 text-accent">
-      {children}
-    </li>
-  );
+  return <li className="chip">{children}</li>;
 }
 
 /** The 45-degree arrow that nudges on row hover. */

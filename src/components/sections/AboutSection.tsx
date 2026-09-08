@@ -11,8 +11,8 @@ export function AboutSection() {
   const { t } = useLocale();
 
   return (
-    <SectionShell id="about" label={t("nav.about")}>
-      <div className="space-y-4 text-muted">
+    <SectionShell id="about" index="01" label={t("nav.about")}>
+      <div className="pixel-card space-y-4 px-6 py-6 text-muted sm:px-7">
         {PARAGRAPHS.map((key) => (
           <p key={key} className="leading-relaxed">
             {t(key)}
@@ -20,7 +20,7 @@ export function AboutSection() {
         ))}
       </div>
 
-      <ul className="mt-6 flex flex-wrap gap-2">
+      <ul className="mt-5 flex flex-wrap gap-2">
         {skills.map((tool) => (
           <Tag key={tool}>{tool}</Tag>
         ))}

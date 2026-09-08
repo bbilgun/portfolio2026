@@ -22,39 +22,39 @@ export function ProjectsSection() {
   const { t } = useLocale();
 
   return (
-    <SectionShell id="projects" label={t("nav.projects")}>
-      <ol className="group/list space-y-12">
+    <SectionShell id="projects" index="03" label={t("nav.projects")}>
+      <ol className="space-y-4">
         {projects.map((project) => (
           <li key={project.id}>
-            <div className="row-card group/row grid gap-4 transition-opacity sm:grid-cols-8 sm:gap-6 lg:group-hover/list:opacity-50 lg:hover:!opacity-100">
-              <div className="sm:col-span-2">
-                <ProjectPreview tint={TINTS[project.id] ?? "from-slate-500/15 to-transparent"} />
-              </div>
+            <article className="pixel-row group/row flex gap-5 px-5 py-5 sm:px-6">
+              <ProjectPreview tint={TINTS[project.id] ?? "from-slate-500/15 to-transparent"} />
 
-              <div className="sm:col-span-6">
-                <h3 className="font-medium leading-snug">
-                  <a
-                    href={project.links.ios ?? project.links.android}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="inline-flex items-baseline text-[rgb(var(--ink))] transition-colors group-hover/row:text-accent"
-                  >
-                    {project.title}
-                    <LinkArrow />
-                  </a>
-                </h3>
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <h3 className="font-medium leading-snug">
+                    <a
+                      href={project.links.ios ?? project.links.android}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="inline-flex items-baseline text-[rgb(var(--ink))] transition-colors group-hover/row:text-accent"
+                    >
+                      {project.title}
+                      <LinkArrow />
+                    </a>
+                  </h3>
+                  <span className="mono-label text-faint">{t(project.statusKey)}</span>
+                </div>
 
-                <p className="mt-1 mono-label text-faint">{t(project.statusKey)}</p>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{t(project.summaryKey)}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{t(project.summaryKey)}</p>
 
-                <ul className="mt-3 flex flex-wrap gap-2">
+                <ul className="mt-4 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <Tag key={tag}>{tag}</Tag>
                   ))}
                 </ul>
 
                 {/* Store links, so each row is reachable on whichever platform it shipped to. */}
-                <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
+                <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1">
                   {project.links.ios ? (
                     <StoreLink href={project.links.ios} label={t("work.store.ios")} title={project.title} />
                   ) : null}
@@ -65,7 +65,7 @@ export function ProjectsSection() {
                   />
                 </p>
               </div>
-            </div>
+            </article>
           </li>
         ))}
       </ol>

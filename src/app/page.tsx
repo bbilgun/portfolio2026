@@ -1,6 +1,6 @@
 import { CursorRibbon } from "@/components/CursorRibbon";
-import { ScrollRoad } from "@/components/ScrollRoad";
-import { SideRail } from "@/components/SideRail";
+import { RoadRail } from "@/components/RoadRail";
+import { SiteHeader } from "@/components/SiteHeader";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
@@ -10,9 +10,11 @@ export default function Home() {
   return (
     <>
       <CursorRibbon />
-      <ScrollRoad />
 
-      <div id="top" className="relative z-10 mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-16 lg:px-24 lg:py-0">
+      <div
+        id="top"
+        className="relative z-10 mx-auto min-h-screen max-w-4xl px-5 pb-20 font-sans sm:px-8"
+      >
         <a
           href="#content"
           className="absolute left-0 top-0 -translate-y-full rounded bg-[rgb(var(--accent))] px-4 py-2 text-sm font-medium text-[rgb(var(--accent-contrast))] transition focus:translate-y-3"
@@ -20,16 +22,21 @@ export default function Home() {
           Skip to content
         </a>
 
-        <div className="lg:flex lg:justify-between lg:gap-4">
-          <SideRail />
+        <SiteHeader />
 
-          <main id="content" className="pt-16 lg:w-1/2 lg:py-24">
+        {/* The road is a real column of the layout, so every stop lines up with
+            the section heading beside it. */}
+        <div className="mt-16 grid gap-x-7 md:grid-cols-[3rem_minmax(0,1fr)]">
+          <RoadRail />
+
+          <main id="content">
             <AboutSection />
             <ExperienceSection />
             <ProjectsSection />
-            <SiteFooter />
           </main>
         </div>
+
+        <SiteFooter />
       </div>
     </>
   );
