@@ -27,7 +27,7 @@ export function ProjectsSection() {
         {projects.map((project) => (
           <li key={project.id}>
             <div className="row-card group/row grid gap-4 transition-opacity sm:grid-cols-8 sm:gap-6 lg:group-hover/list:opacity-50 lg:hover:!opacity-100">
-              <div className="sm:col-span-2">
+              <div className="sm:col-span-2 sm:flex sm:items-center sm:justify-center">
                 <ProjectPreview tint={TINTS[project.id] ?? "from-slate-500/15 to-transparent"} />
               </div>
 
