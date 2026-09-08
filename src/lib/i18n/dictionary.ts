@@ -19,14 +19,12 @@ export const dictionary = {
     "hero.role": "FRONTEND & MOBILE DEVELOPER",
     "hero.tagline.lead":
       "Focusing on building accessible, high-performance web and mobile interfaces.",
-    "hero.tagline.fast": "Fast, clear, and built to last.",
-    "hero.tagline.tail": "Several are live on the App Store and Google Play.",
     "about.p1":
-      "I got into building by making things for Sys&CoTech, my university’s tech club. A portal, a hackathon site, whatever needed doing. A few years later I was running it as president. I studied Computer Science at MUST, but most of what I know came from shipping things people actually used.",
+      "Graduated from MUST-SICT with a degree in Computer Science (2026). Joined the Sys&CoTech club in my second year, contributing to web development for various events and activities. In my final year, I was elected club President and led a team of 30+ members.",
     "about.p2":
-      "Now I build front-ends at EverestSolution, mostly for leasing and fintech products like eLeasing, Nice Leasing, Gate, EntCreditMN and Wallet. Several are live on the App Store and Google Play. I work in React and React Native with TypeScript and Tailwind, and my favourite part of the job is when a design file turns into something that feels fast in your hand.",
+      "Currently working at Everest Solution LLC, building user interfaces for fintech and leasing products (eLeasing, Nice Leasing, Gate, EntCreditMN, Wallet) using React, React Native, TypeScript, and Tailwind CSS.",
     "about.p3":
-      "I’m looking for my next team, somewhere I can keep shipping to real users and learn from people further along than me.",
+      "Looking for my next team to keep shipping live products to real users while growing alongside experienced engineers.",
     "work.status.shipped": "SHIPPED",
     "work.status.contributed": "CONTRIBUTED · MAINTAINED",
     "work.store.ios": "App Store",
@@ -62,7 +60,11 @@ export const dictionary = {
     "timeline.e4.title": "EverestSolution",
     "timeline.e4.focus": "FRONTEND & MOBILE DEVELOPER",
     "timeline.e4.body":
-      "Build and maintain the front-ends for leasing and fintech products: eLeasing, Nice Leasing, Gate, EntCreditMN and Wallet. React on the web, React Native on mobile. The apps are live on the App Store and Google Play.",
+      "Building and maintaining mobile applications for fintech and leasing products. Responsible for migrating legacy Xamarin (C#) apps to React Native.",
+    "timeline.e5.title": "Sono Fintech",
+    "timeline.e5.focus": "STUDENT PROGRAMME · LOAN COLLECTIONS",
+    "timeline.e5.body":
+      "Paid summer internship on Sono's student programme, working the collections side of their loan app: contacting borrowers, chasing repayments and arranging extensions. I finished as the highest performing intern in the cohort. It is also where I learned how consumer lending works from the inside, which is the product I now build interfaces for.",
     "contact.title": "Open to frontend and mobile roles.",
     "contact.body":
       "Email is the fastest way to reach me. I read everything and reply within a day. Happy to talk about a role, a contract, or an app you want built properly.",
@@ -81,8 +83,6 @@ export const dictionary = {
     "hero.role": "FRONTEND & MOBILE ХӨГЖҮҮЛЭГЧ",
     "hero.tagline.lead":
       "Хүртээмжтэй, өндөр гүйцэтгэлтэй веб болон мобайл интерфэйс хөгжүүлэхийг зорьдог.",
-    "hero.tagline.fast": "",
-    "hero.tagline.tail": "",
     "about.p1":
       "ШУТИС-МХТС-ийг Компьютерийн ухааны чиглэлээр 2026 төгссөн. 2-р курстээ Sys&CoTech клубт нэгдэн, зохион байгуулж буй үйл ажиллагаануудын веб хөгжүүлэлтэд оролцож эхэлсэн. Сүүлчийн жилдээ клубын тэргүүнээр сонгогдон 30+ гишүүнтэй багийг ахалж байсан туршлагатай.",
     "about.p2":
@@ -124,7 +124,11 @@ export const dictionary = {
     "timeline.e4.title": "EverestSolution",
     "timeline.e4.focus": "FRONTEND & ГАР УТАСНЫ ХӨГЖҮҮЛЭГЧ",
     "timeline.e4.body":
-      "Лизинг, финтекийн бүтээгдэхүүнүүдийн интерфэйсийг хөгжүүлж, хариуцан ажилладаг: eLeasing, Nice Leasing, Gate, EntCreditMN, Wallet. Вебэд React, гар утсанд React Native. Аппууд нь App Store, Google Play дээр ажиллаж байна.",
+      "Финтек болон лизингийн мобайл аппликейшнуудын хөгжүүлэлт, цаашдын арчилгаа дээр ажилладаг. Мөн хуучин Xamarin (C#) дээрх аппуудыг React Native руу хөрвүүлэх ажлыг гүйцэтгэдэг.",
+    "timeline.e5.title": "Соно Финтек",
+    "timeline.e5.focus": "ОЮУТАН ХӨТӨЛБӨР · ЗЭЭЛИЙН ЭРГЭН ТӨЛӨЛТ",
+    "timeline.e5.body":
+      "Соно аппын \"Оюутан хөтөлбөр\"-т цалинтай зуны дадлага хийж, зээлийн эргэн төлөлтийн талд ажилласан: зээлдэгчидтэй холбогдох, төлөлт хөөцөлдөх, хугацаа сунгах. Хөтөлбөрийн хамгийн өндөр үзүүлэлттэй дадлагажигч болсон. Хэрэглээний зээл дотроосоо хэрхэн ажилладгийг эндээс сурсан нь одоо интерфэйсийг нь хийж байгаа бүтээгдэхүүнд минь тусдаг.",
     "contact.title": "Frontend болон гар утасны ажлын байранд нээлттэй.",
     "contact.body":
       "Имэйлээр холбогдоход хамгийн хурдан. Бүх захидлыг уншиж, нэг өдрийн дотор хариу өгдөг. Ажлын байр, гэрээт ажил, эсвэл сайн хийгдсэн апп хэрэгтэй бол ярилцъя.",

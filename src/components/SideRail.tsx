@@ -47,7 +47,7 @@ export function SideRail() {
         <p className="mt-3 text-lg font-medium tracking-tight sm:text-xl">{t("hero.role")}</p>
 
         <p className="mt-4 max-w-xs leading-relaxed text-muted">
-          {t("hero.tagline.lead")} {t("hero.tagline.fast")} {t("hero.tagline.tail")}
+          {t("hero.tagline.lead")}
         </p>
 
         {/* Desktop-only section nav; on mobile the sections are simply scrolled to. */}

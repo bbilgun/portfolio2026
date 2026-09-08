@@ -39,6 +39,14 @@ const ENTRIES: Entry[] = [
     href: "https://syscotech.mn",
     tags: ["React", "Tailwind CSS", "Git"],
   },
+  {
+    period: "2023.7 to 2023.8",
+    titleKey: "timeline.e5.title",
+    focusKey: "timeline.e5.focus",
+    bodyKey: "timeline.e5.body",
+    href: "https://sono.mn",
+    tags: ["Fintech", "Collections"],
+  },
 ];
 
 export function ExperienceSection() {

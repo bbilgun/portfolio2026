@@ -169,8 +169,8 @@
     transition: opacity 0.4s ease;
     --spot-x: 50vw;
     --spot-y: 50vh;
-    --spot-core: 0.13;
-    --spot-halo: 0.05;
+    --spot-core: 0.07;
+    --spot-halo: 0.025;
     background:
       radial-gradient(
         420px circle at var(--spot-x) var(--spot-y),
@@ -186,8 +186,8 @@
 
   /* On a near-white page the same alphas vanish, so lift them. */
   :root:not([data-theme="dark"]) .cursor-spotlight {
-    --spot-core: 0.1;
-    --spot-halo: 0.04;
+    --spot-core: 0.055;
+    --spot-halo: 0.02;
   }
 
   .hairline {
