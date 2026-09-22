@@ -5,16 +5,29 @@ export type Project = {
   title: string;
   summaryKey: TranslationKey;
   statusKey: TranslationKey;
-  /** Store listings. Android is the constant here; a few apps ship iOS too. */
-  links: { ios?: string; android: string };
+  /** Store listings, or a single `web` link for projects with no store presence. */
+  links: { ios?: string; android?: string; web?: string };
   tags: string[];
+  /** Preview silhouette. Defaults to "phone". */
+  shape?: "phone" | "kiosk";
 };
 
 /**
- * Apps built at EverestSolution. The five "shipped" entries are ones I built
- * the front-end for; the rest I added features to and maintained.
+ * Apps built at EverestSolution. The "shipped" entries are ones I built
+ * the front-end for; the "contributed" ones I added features to and maintained.
  */
 export const projects: Project[] = [
+  {
+    id: "fgnkiosk",
+    title: "FGN Gold Kiosk",
+    summaryKey: "work.fgnkiosk.summary",
+    statusKey: "work.status.shipped",
+    links: {
+      web: "https://www.finegold.mn/#/medee/kiosk-neelt",
+    },
+    tags: ["React", "Vite", "Zustand"],
+    shape: "kiosk",
+  },
   {
     id: "eleasing",
     title: "eLeasing",

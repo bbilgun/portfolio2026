@@ -7,6 +7,7 @@ import { ProjectPreview } from "./ProjectPreview";
 
 /** Preview tints, keyed to each project id. */
 const TINTS: Record<string, string> = {
+  fgnkiosk: "from-yellow-500/15 to-transparent",
   eleasing: "from-sky-500/15 to-transparent",
   niceleasing: "from-emerald-500/15 to-transparent",
   gate: "from-indigo-500/15 to-transparent",
@@ -28,13 +29,16 @@ export function ProjectsSection() {
           <li key={project.id}>
             <div className="row-card group/row grid gap-4 transition-opacity sm:grid-cols-8 sm:gap-6 lg:group-hover/list:opacity-50 lg:hover:!opacity-100">
               <div className="sm:col-span-2 sm:flex sm:items-center sm:justify-center">
-                <ProjectPreview tint={TINTS[project.id] ?? "from-slate-500/15 to-transparent"} />
+                <ProjectPreview
+                  tint={TINTS[project.id] ?? "from-slate-500/15 to-transparent"}
+                  shape={project.shape}
+                />
               </div>
 
               <div className="sm:col-span-6">
                 <h3 className="font-medium leading-snug">
                   <a
-                    href={project.links.ios ?? project.links.android}
+                    href={project.links.ios ?? project.links.android ?? project.links.web}
                     target="_blank"
                     rel="noreferrer noopener"
                     className="inline-flex items-baseline text-[rgb(var(--ink))] transition-colors group-hover/row:text-accent"
@@ -58,11 +62,16 @@ export function ProjectsSection() {
                   {project.links.ios ? (
                     <StoreLink href={project.links.ios} label={t("work.store.ios")} title={project.title} />
                   ) : null}
-                  <StoreLink
-                    href={project.links.android}
-                    label={t("work.store.android")}
-                    title={project.title}
-                  />
+                  {project.links.android ? (
+                    <StoreLink
+                      href={project.links.android}
+                      label={t("work.store.android")}
+                      title={project.title}
+                    />
+                  ) : null}
+                  {project.links.web ? (
+                    <StoreLink href={project.links.web} label={t("work.store.web")} title={project.title} />
+                  ) : null}
                 </p>
               </div>
             </div>

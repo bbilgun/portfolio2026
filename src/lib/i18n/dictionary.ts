@@ -29,6 +29,9 @@ export const dictionary = {
     "work.status.contributed": "CONTRIBUTED · MAINTAINED",
     "work.store.ios": "App Store",
     "work.store.android": "Google Play",
+    "work.store.web": "Launch coverage",
+    "work.fgnkiosk.summary":
+      "4K touch kiosk for buying physical gold in person at Fine Gold Nation. Built the whole front-end: identity verification, QPay and card payment, and hardware-driven dispensing.",
     "work.eleasing.summary":
       "EverestSolution’s largest consumer loan product, up to ₮5,000,000 over 3 to 12 months. I built the React Native front-end: registration, loan request, contract signing and repayment tracking.",
     "work.niceleasing.summary":
@@ -93,6 +96,9 @@ export const dictionary = {
     "work.status.contributed": "ХУВЬ НЭМЭР · ЗАСВАР ҮЙЛЧИЛГЭЭ",
     "work.store.ios": "App Store",
     "work.store.android": "Google Play",
+    "work.store.web": "Нээлтийн мэдээ",
+    "work.fgnkiosk.summary":
+      "Fine Gold Nation-ы салбарт биет алт худалдаж авах 4K тач дэлгэцтэй киоск. Бүтэн интерфэйсийг нь бүтээсэн: хэрэглэгчийн баталгаажуулалт, QPay болон картын төлбөр, төхөөрөмжөөс шууд удирддаг олголт.",
     "work.eleasing.summary":
       "EverestSolution-ы хамгийн том зээлийн бүтээгдэхүүн. 3-аас 12 сарын хугацаатай ₮5,000,000 хүртэл. React Native интерфэйсийг нь бүтээсэн: бүртгэл, зээлийн хүсэлт, гэрээ байгуулалт, эргэн төлөлтийн хяналт.",
     "work.niceleasing.summary":
