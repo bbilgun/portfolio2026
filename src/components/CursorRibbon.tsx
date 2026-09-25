@@ -15,7 +15,7 @@ import { useEffect, useRef } from "react";
  * and overlap into a single flowing band.
  */
 
-const TRAILS = 20;
+const TRAILS = 12;
 const NODES_PER_TRAIL = 50;
 const FRICTION = 0.5;
 const DAMPENING = 0.25;
@@ -166,7 +166,8 @@ export function CursorRibbon() {
       composite = dark ? "lighter" : "source-over";
       saturation = dark ? 60 : 72;
       lightness = dark ? 18 : 58;
-      alpha = dark ? 0.5 : 0.1;
+      // Kept low on purpose: the ribbon is garnish, not the main event.
+      alpha = dark ? 0.28 : 0.1;
     };
 
     readTheme();

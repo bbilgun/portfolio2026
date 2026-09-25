@@ -12,7 +12,7 @@ export function EducationSection() {
 
   return (
     <SectionShell id="education" label={t("nav.education")}>
-      <div className="grid gap-1 sm:grid-cols-8 sm:gap-6">
+      <div data-reveal className="grid gap-1 sm:grid-cols-8 sm:gap-6">
         <p className="mono-label mt-1 text-faint sm:col-span-2">2022 to 2026</p>
 
         <div className="sm:col-span-6">

@@ -57,7 +57,7 @@ export function ExperienceSection() {
       {/* Siblings dim while any row is hovered, so the focused one leads. */}
       <ol className="group/list space-y-12">
         {ENTRIES.map((entry) => (
-          <li key={entry.titleKey}>
+          <li key={entry.titleKey} data-reveal>
             <div className="row-card group/row grid gap-2 transition-opacity sm:grid-cols-8 sm:gap-6 lg:group-hover/list:opacity-50 lg:hover:!opacity-100">
               <header className="mono-label mt-1 text-faint sm:col-span-2">
                 {entry.period}

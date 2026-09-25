@@ -75,6 +75,9 @@ export const dictionary = {
     "contact.or": "or find me on",
     "footer.rights": "ALL RIGHTS RESERVED",
     "footer.built": "BUILT WITH NEXT · TAILWIND · FRAMER",
+    "notfound.title": "Wrong turn.",
+    "notfound.body": "This road doesn't lead anywhere. The page you're looking for doesn't exist.",
+    "notfound.cta": "BACK HOME",
   },
   mn: {
     "nav.about": "Танилцуулга",
@@ -142,6 +145,9 @@ export const dictionary = {
     "contact.or": "эсвэл эндээс",
     "footer.rights": "БҮХ ЭРХ ХАМГААЛАГДСАН",
     "footer.built": "NEXT · TAILWIND · FRAMER-ЭЭР БҮТЭЭСЭН",
+    "notfound.title": "Буруу эргэлт.",
+    "notfound.body": "Энэ зам хаашаа ч хүргэхгүй. Таны хайсан хуудас байхгүй байна.",
+    "notfound.cta": "НҮҮР ХУУДАС РУУ",
   },
 } satisfies Record<Locale, Record<string, string>>;
 

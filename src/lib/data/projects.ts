@@ -10,6 +10,12 @@ export type Project = {
   tags: string[];
   /** Preview silhouette. Defaults to "phone". */
   shape?: "phone" | "kiosk";
+  /**
+   * App logo under /public/apps. `bg` is the logo's own background colour,
+   * used to fill the rest of the preview screen so it reads as a splash
+   * screen; `inset` pads logos that run to the edge of their canvas.
+   */
+  icon: { src: string; bg: string; inset?: boolean };
 };
 
 /**
@@ -19,6 +25,8 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: "fgnkiosk",
+    icon: { src: "/apps/fgnkiosk.png", bg: "#000", inset: true },
+    shape: "kiosk",
     title: "FGN Gold Kiosk",
     summaryKey: "work.fgnkiosk.summary",
     statusKey: "work.status.shipped",
@@ -26,10 +34,10 @@ export const projects: Project[] = [
       web: "https://www.finegold.mn/#/medee/kiosk-neelt",
     },
     tags: ["React", "Vite", "Zustand"],
-    shape: "kiosk",
   },
   {
     id: "eleasing",
+    icon: { src: "/apps/eleasing.png", bg: "#001372" },
     title: "eLeasing",
     summaryKey: "work.eleasing.summary",
     statusKey: "work.status.shipped",
@@ -41,6 +49,7 @@ export const projects: Project[] = [
   },
   {
     id: "niceleasing",
+    icon: { src: "/apps/niceleasing.png", bg: "#fff" },
     title: "Nice Leasing",
     summaryKey: "work.niceleasing.summary",
     statusKey: "work.status.shipped",
@@ -52,6 +61,7 @@ export const projects: Project[] = [
   },
   {
     id: "gate",
+    icon: { src: "/apps/gate.png", bg: "#fff", inset: true },
     title: "Gate",
     summaryKey: "work.gate.summary",
     statusKey: "work.status.shipped",
@@ -63,6 +73,7 @@ export const projects: Project[] = [
   },
   {
     id: "entcredit",
+    icon: { src: "/apps/entcredit.png", bg: "#fff", inset: true },
     title: "EntCreditMN",
     summaryKey: "work.entcredit.summary",
     statusKey: "work.status.shipped",
@@ -74,6 +85,7 @@ export const projects: Project[] = [
   },
   {
     id: "wallet",
+    icon: { src: "/apps/wallet.png", bg: "#f7f7f7" },
     title: "Wallet (MonInvest)",
     summaryKey: "work.wallet.summary",
     statusKey: "work.status.shipped",
@@ -84,6 +96,7 @@ export const projects: Project[] = [
   },
   {
     id: "onelend",
+    icon: { src: "/apps/onelend.png", bg: "#fff" },
     title: "OneLend",
     summaryKey: "work.onelend.summary",
     statusKey: "work.status.contributed",
@@ -94,6 +107,7 @@ export const projects: Project[] = [
   },
   {
     id: "carzeel",
+    icon: { src: "/apps/carzeel.png", bg: "#f7f7f7" },
     title: "CAR zeel",
     summaryKey: "work.carzeel.summary",
     statusKey: "work.status.contributed",
@@ -105,6 +119,7 @@ export const projects: Project[] = [
   },
   {
     id: "woow",
+    icon: { src: "/apps/woow.png", bg: "#fff" },
     title: "WooW pay",
     summaryKey: "work.woow.summary",
     statusKey: "work.status.contributed",
@@ -116,6 +131,7 @@ export const projects: Project[] = [
   },
   {
     id: "fgn",
+    icon: { src: "/apps/fgn.png", bg: "#000" },
     title: "FGN: Fine Gold Nation",
     summaryKey: "work.fgn.summary",
     statusKey: "work.status.contributed",

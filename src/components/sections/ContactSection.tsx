@@ -14,7 +14,7 @@ export function ContactSection() {
 
   return (
     <SectionShell id="contact" label={t("nav.contact")}>
-      <div className="surface rounded-xl p-6 sm:p-7">
+      <div data-reveal className="surface rounded-xl p-6 sm:p-7">
         <h3 className="text-lg font-medium leading-snug">{t("contact.title")}</h3>
         <p className="mt-3 max-w-prose text-sm leading-relaxed text-muted">{t("contact.body")}</p>
 

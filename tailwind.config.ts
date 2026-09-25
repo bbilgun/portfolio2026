@@ -32,6 +32,18 @@ const config: Config = {
           from: { transform: "scaleY(0.2)" },
           to: { transform: "scaleY(1)" },
         },
+        "scroll-cue": {
+          "0%": { transform: "translateY(0)", opacity: "1" },
+          "70%, 100%": { transform: "translateY(12px)", opacity: "0" },
+        },
+        hazard: {
+          "0%, 49%": { opacity: "1" },
+          "50%, 100%": { opacity: "0" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
         // Faint engine vibration while the car is moving.
         engine: {
           "0%, 100%": { transform: "translateY(0)" },
@@ -42,6 +54,9 @@ const config: Config = {
         "pulse-soft": "pulse-soft 2.4s cubic-bezier(0.4,0,0.6,1) infinite",
         caret: "caret 1.1s step-end infinite",
         engine: "engine 0.12s ease-in-out infinite",
+        float: "float 6s ease-in-out infinite",
+        hazard: "hazard 1s step-end infinite",
+        "scroll-cue": "scroll-cue 1.8s ease-out infinite",
       },
     },
   },

@@ -17,22 +17,27 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
  * Inlined in <head> so the correct theme is painted before first paint —
  * without this the light default flashes for dark-mode visitors.
  */
-export const themeInitScript = `
-(function(){
-  try {
-    var stored = localStorage.getItem(${JSON.stringify(STORAGE_KEY)});
-    var theme = stored === "light" || stored === "dark"
-      ? stored
-      : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    document.documentElement.setAttribute("data-theme", theme);
-  } catch (e) {
-    document.documentElement.setAttribute("data-theme", "light");
-  }
-})();
-`.trim();
+// Light mode is switched off for now: the site always renders dark.
+// To bring it back, restore the script below and the <ThemeToggle /> uses in
+// Hero.tsx and SideRail.tsx.
+//
+// export const themeInitScript = `
+// (function(){
+//   try {
+//     var stored = localStorage.getItem(${JSON.stringify(STORAGE_KEY)});
+//     var theme = stored === "light" || stored === "dark"
+//       ? stored
+//       : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+//     document.documentElement.setAttribute("data-theme", theme);
+//   } catch (e) {
+//     document.documentElement.setAttribute("data-theme", "light");
+//   }
+// })();
+// `.trim();
+export const themeInitScript = `document.documentElement.setAttribute("data-theme", "dark");`;
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
 
   // Read back whatever the init script already committed to the DOM.
   useEffect(() => {

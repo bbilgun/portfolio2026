@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk, Unbounded } from "next/font/google";
 import { LocaleProvider } from "@/lib/i18n";
 import { ThemeProvider, themeInitScript } from "@/components/ThemeProvider";
 import "./globals.css";
@@ -13,6 +13,13 @@ const inter = Inter({
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",
+  display: "swap",
+});
+
+// Hero headline only; the rest of the page keeps Space Grotesk.
+const unbounded = Unbounded({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-hero",
   display: "swap",
 });
 
@@ -46,10 +53,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f7f7fa" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0f" },
-  ],
+  // Dark only while light mode is off (see ThemeProvider).
+  themeColor: "#0d1221",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -57,7 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} ${unbounded.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />

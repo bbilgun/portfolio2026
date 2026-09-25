@@ -14,13 +14,13 @@ export function AboutSection() {
     <SectionShell id="about" label={t("nav.about")}>
       <div className="space-y-4 text-muted">
         {PARAGRAPHS.map((key) => (
-          <p key={key} className="text-justify leading-relaxed">
+          <p key={key} data-reveal className="text-justify leading-relaxed">
             {t(key)}
           </p>
         ))}
       </div>
 
-      <ul className="mt-6 flex flex-wrap gap-2">
+      <ul data-reveal className="mt-6 flex flex-wrap gap-2">
         {skills.map((tool) => (
           <Tag key={tool}>{tool}</Tag>
         ))}
