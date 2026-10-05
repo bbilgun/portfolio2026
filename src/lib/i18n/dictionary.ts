@@ -33,7 +33,7 @@ export const dictionary = {
     "work.fgnkiosk.summary":
       "4K touch kiosk for buying physical gold in person at Fine Gold Nation. Built the entire front-end: staff login, the QPay payment flow, and the purchase screens. Where the brief left gaps, I designed several screens myself.",
     "work.eleasing.summary":
-      "EverestSolution’s largest consumer loan product, up to ₮5,000,000 over 3 to 12 months. I built the React Native front-end: registration, loan request, contract signing and repayment tracking.",
+      "EverestSolution’s largest consumer loan product, up to ₮5,000,000 over 3 to 12 months. I migrated it from Xamarin (C#) to React Native and built the new front-end: registration, loan request, contract signing and repayment tracking.",
     "work.niceleasing.summary":
       "Consumer lending app under the Nice Leasing brand, ₮100,000 to ₮1,000,000 over 3 to 12 months. Its own identity and theming over the loan flow.",
     "work.gate.summary":
@@ -89,24 +89,24 @@ export const dictionary = {
     "nav.projects": "Төслүүд",
     "hero.role": "FRONTEND & MOBILE ХӨГЖҮҮЛЭГЧ",
     "hero.tagline.lead":
-      "Хүртээмжтэй, өндөр гүйцэтгэлтэй веб болон мобайл интерфэйс хөгжүүлэхийг зорьдог.",
+      "Хэрэглэхэд хялбар, гүйцэтгэлтэй сайтай веб болон мобайл интерфэйс хөгжүүлэхийг зорьж ажилладаг.",
     "about.p1":
-      "ШУТИС-МХТС-ийг Компьютерийн ухааны чиглэлээр 2026 төгссөн. 2-р курстээ Sys&CoTech клубт нэгдэн, зохион байгуулж буй үйл ажиллагаануудын веб хөгжүүлэлтэд оролцож эхэлсэн. Сүүлчийн жилдээ клубын тэргүүнээр сонгогдон 30+ гишүүнтэй багийг ахалж байсан туршлагатай.",
+      "ШУТИС-МХТС-ийг Компьютерийн ухааны чиглэлээр 2026 онд төгссөн. 2-р курстээ Sys&CoTech клубт нэгдэн, зохион байгуулж буй үйл ажиллагаануудын веб хөгжүүлэлтэд оролцож эхэлсэн. Сүүлчийн жилдээ клубын тэргүүнээр сонгогдон 30+ гишүүнтэй багийг ахалж байсан туршлагатай.",
     "about.p2":
       "Одоо EverestSolution LLC-д React, React Native, TypeScript, Tailwind CSS ашиглан финтек болон лизингийн бүтээгдэхүүнүүдийн (eLeasing, Nice Leasing, Gate, EntCreditMN, Wallet) хэрэглэгчийн интерфэйс дээр ажилладаг.",
     "about.p3":
       "Бодит хэрэглэгчдэд зориулж бүтээгдэхүүн гаргахын хажуугаар туршлагатай инженерүүдээс суралцаж, цааш өсөн дэвжих дараагийн багаа хайж байна.",
-    "work.status.shipped": "ГАРГАСАН",
-    "work.status.contributed": "ХУВЬ НЭМЭР · ЗАСВАР ҮЙЛЧИЛГЭЭ",
+    "work.status.shipped": "ГҮЙЦЭТГЭСЭН",
+    "work.status.contributed": "CONTRIBUTED · MAINTAINED",
     "work.store.ios": "App Store",
     "work.store.android": "Google Play",
     "work.store.web": "Нээлтийн мэдээ",
     "work.fgnkiosk.summary":
-      "Fine Gold Nation-ы салбарт биет алт худалдаж авах 4K тач дэлгэцтэй киоск. Бүх интерфэйсийг нь бүтээсэн: ажилтны нэвтрэлт, QPay төлбөрийн урсгал, худалдан авалтын дэлгэцүүд. Даалгаварт тодорхойгүй байсан хэд хэдэн дэлгэцийг өөрөө зохиож гаргасан.",
+      "Fine Gold Nation-ы биет алт худалдаалдаг киоск. Хэрэглэгчийн интерфэйс-ийг бүрэн хариуцаж хийсэн. Өгөгдсөн дизайнд байгаагүй зарим нэг зайлшгүй шаардлагатай дэлгэцүүдийг өөрөө зохиомж гарган хийсэн (Staff login, бүтээгдэхүүн бүртгэх дэлгэцүүд г.м).",
     "work.eleasing.summary":
-      "EverestSolution-ы хамгийн том зээлийн бүтээгдэхүүн. 3-аас 12 сарын хугацаатай ₮5,000,000 хүртэл. React Native интерфэйсийг нь бүтээсэн: бүртгэл, зээлийн хүсэлт, гэрээ байгуулалт, эргэн төлөлтийн хяналт.",
+      "Нэхэмжлэл явуулах, баталгаажуулах гэх мэт хэрэглэгчийн урсгал бүхий лизингийн бүтээгдэхүүн. Хуучин Xamarin (C#) аппыг React Native руу хөрвүүлсэн.",
     "work.niceleasing.summary":
-      "Nice Leasing брэндийн зээлийн апп. 3-аас 12 сарын хугацаатай ₮100,000-аас ₮1,000,000. Ижил зээлийн урсгал дээр өөрийн брэнд, өнгө төрх.",
+      "3-аас 12 сарын хугацаатай ₮100,000-аас ₮1,000,000 төгрөгийн зээл авах боломжтой финтек апп. Хамгийн анх авч ажиллаж байсан бодит төсөл.",
     "work.gate.summary":
       "3-аас 9 сарын богино хугацаат зээлийн апп. Хүсэлтийн урсгал, гэрээний алхам, төлбөрийн хуваарийн интерфэйсийг хийсэн.",
     "work.entcredit.summary":
