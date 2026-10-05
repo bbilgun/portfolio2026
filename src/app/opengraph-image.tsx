@@ -25,7 +25,7 @@ export default function OpengraphImage() {
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ fontSize: 26, letterSpacing: 6, color: "#8d71ff" }}>
+        <div style={{ fontSize: 26, letterSpacing: 6, color: "#c4f042" }}>
           FRONTEND &amp; MOBILE DEVELOPER
         </div>
         <div style={{ fontSize: 128, fontWeight: 700, marginTop: 16 }}>Bilguun</div>

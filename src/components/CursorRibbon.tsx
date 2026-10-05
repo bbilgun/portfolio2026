@@ -110,12 +110,12 @@ class Trail {
 function accentHue(): number {
   const raw = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim();
   const [r, g, b] = raw.split(/[\s,]+/).map((value) => Number(value) / 255);
-  if ([r, g, b].some((value) => Number.isNaN(value))) return 265;
+  if ([r, g, b].some((value) => Number.isNaN(value))) return 76;
 
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
   const delta = max - min;
-  if (delta === 0) return 265;
+  if (delta === 0) return 76;
 
   let hue: number;
   if (max === r) hue = ((g - b) / delta) % 6;
@@ -174,7 +174,7 @@ export function CursorRibbon() {
     const themeObserver = new MutationObserver(readTheme);
     themeObserver.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["data-theme", "style"],
+      attributeFilter: ["data-theme", "data-accent", "style"],
     });
 
     /* -- sizing ----------------------------------------------------------- */

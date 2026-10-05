@@ -6,7 +6,7 @@ import { projects, type Project } from "@/lib/data/projects";
 import { AppIcon } from "./AppIcon";
 import { NameMark } from "./NameMark";
 import { SOCIALS } from "./icons";
-import { LocaleToggle } from "./SideRail";
+import { AccentToggle, LocaleToggle } from "./SideRail";
 
 const EMAIL = "xbbilgun@gmail.com";
 
@@ -16,7 +16,7 @@ const EMAIL = "xbbilgun@gmail.com";
  */
 const PHONES = [
   { id: "niceleasing", card: "from-emerald-400 to-teal-600", pose: "-translate-x-[58%] translate-y-6 -rotate-[9deg] scale-[0.88] group-hover/fan:-translate-x-[78%] group-hover/fan:-rotate-[13deg]", delay: "0.6s" },
-  { id: "eleasing", card: "from-[rgb(var(--accent))] to-indigo-700", pose: "z-10", delay: "0s" },
+  { id: "eleasing", card: "from-[rgb(var(--accent))] to-[rgb(var(--accent-deep))]", pose: "z-10", delay: "0s" },
   { id: "gate", card: "from-sky-400 to-blue-700", pose: "translate-x-[58%] translate-y-6 rotate-[9deg] scale-[0.88] group-hover/fan:translate-x-[78%] group-hover/fan:rotate-[13deg]", delay: "1.2s" },
 ];
 
@@ -150,6 +150,7 @@ export function Hero() {
   return (
     <section ref={ref} className="relative flex min-h-[100svh] items-center pb-24 pt-24">
       <div className="rise absolute right-0 top-6 flex items-center gap-2" style={stagger(5)}>
+        <AccentToggle />
         <LocaleToggle />
         {/* <ThemeToggle /> — light mode is off, see ThemeProvider. */}
       </div>
@@ -157,17 +158,7 @@ export function Hero() {
       <div className="grid w-full items-center gap-16 lg:grid-cols-12">
         <div className="lg:col-span-7">
           {/* The name sits outside the fading copy: it doesn't fade, it flies. */}
-          <div className="hero-copy">
-            <p
-              className="rise inline-flex items-center gap-2.5 rounded-full border border-[rgb(var(--line)/0.1)] bg-[rgb(var(--surface)/0.6)] px-3.5 py-2 mono-label text-muted backdrop-blur"
-              style={stagger(0)}
-            >
-              <span className="status-dot h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden />
-              {t("hero.status")}
-            </p>
-          </div>
-
-          <h1 className="relative z-30 mt-7 text-[clamp(3.4rem,10vw,7.5rem)] leading-[0.88]">
+          <h1 className="relative z-30 text-[clamp(3.4rem,10vw,7.5rem)] leading-[0.88]">
             <span ref={nameRef} className="inline-block origin-top-left will-change-transform">
               <NameMark animate />
             </span>
@@ -175,10 +166,9 @@ export function Hero() {
 
           <div className="hero-copy">
             <p
-              className="rise mt-6 flex items-center gap-3 text-base font-medium tracking-[0.08em] sm:text-lg"
+              className="rise mt-6 text-base font-medium tracking-[0.08em] sm:text-lg"
               style={stagger(2)}
             >
-              <span className="h-px w-10 bg-[rgb(var(--accent))]" aria-hidden />
               {t("hero.role")}
             </p>
 

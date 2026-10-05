@@ -4,7 +4,7 @@ import { locales, useLocale } from "@/lib/i18n";
 import { useScrollSpy } from "@/lib/useScrollSpy";
 import { MoonIcon, SOCIALS, SunIcon } from "./icons";
 import { NameMark } from "./NameMark";
-import { useTheme } from "./ThemeProvider";
+import { ACCENTS, useTheme, type Accent } from "./ThemeProvider";
 import type { TranslationKey } from "@/lib/i18n";
 
 export const SECTIONS: { id: string; key: TranslationKey }[] = [
@@ -102,6 +102,7 @@ export function SideRail() {
         </ul>
 
           <span className="ml-auto flex items-center gap-2 lg:ml-4">
+            <AccentToggle />
             <LocaleToggle />
             {/* <ThemeToggle /> — light mode is off, see ThemeProvider. */}
           </span>
@@ -128,6 +129,44 @@ export function LocaleToggle() {
           }`}
         >
           {entry.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/** Swatch colours mirror the dark-theme `--accent` values in globals.css. */
+const ACCENT_SWATCHES: Record<Accent, string> = {
+  purple: "rgb(141 113 255)",
+  red: "rgb(255 90 95)",
+  blue: "rgb(96 165 250)",
+  lime: "rgb(196 240 66)",
+};
+
+export function AccentToggle() {
+  const { accent, setAccent } = useTheme();
+
+  return (
+    <div className="flex items-center gap-0.5 rounded-full surface-sunken p-0.5" role="group" aria-label="Accent colour">
+      {ACCENTS.map((entry) => (
+        <button
+          key={entry}
+          type="button"
+          onClick={() => setAccent(entry)}
+          aria-pressed={accent === entry}
+          aria-label={entry}
+          title={entry}
+          className="flex h-7 w-7 items-center justify-center rounded-full"
+        >
+          <span
+            className={`h-3 w-3 rounded-full transition-[box-shadow,transform] ${
+              accent === entry
+                ? "scale-110 shadow-[0_0_0_2px_rgb(var(--surface-2)),0_0_0_3.5px_currentColor]"
+                : "opacity-70 hover:opacity-100"
+            }`}
+            style={{ backgroundColor: ACCENT_SWATCHES[entry], color: ACCENT_SWATCHES[entry] }}
+            aria-hidden
+          />
         </button>
       ))}
     </div>

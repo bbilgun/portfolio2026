@@ -4,11 +4,18 @@ import { createContext, useCallback, useContext, useEffect, useState } from "rea
 
 export type Theme = "light" | "dark";
 
+export const ACCENTS = ["purple", "red", "blue", "lime"] as const;
+export type Accent = (typeof ACCENTS)[number];
+const DEFAULT_ACCENT: Accent = "lime";
+
 const STORAGE_KEY = "bilguun:theme";
+const ACCENT_STORAGE_KEY = "bilguun:accent";
 
 type ThemeContextValue = {
   theme: Theme;
   toggleTheme: () => void;
+  accent: Accent;
+  setAccent: (accent: Accent) => void;
 };
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
@@ -34,15 +41,37 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 //   }
 // })();
 // `.trim();
-export const themeInitScript = `document.documentElement.setAttribute("data-theme", "dark");`;
+export const themeInitScript = `
+(function(){
+  var root = document.documentElement;
+  root.setAttribute("data-theme", "dark");
+  try {
+    var accent = localStorage.getItem(${JSON.stringify(ACCENT_STORAGE_KEY)});
+    if (${JSON.stringify(ACCENTS)}.indexOf(accent) !== -1) root.setAttribute("data-accent", accent);
+  } catch (e) {}
+})();
+`.trim();
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
+  const [accent, setAccentState] = useState<Accent>(DEFAULT_ACCENT);
 
   // Read back whatever the init script already committed to the DOM.
   useEffect(() => {
-    const attr = document.documentElement.getAttribute("data-theme");
-    setTheme(attr === "dark" ? "dark" : "light");
+    const root = document.documentElement;
+    setTheme(root.getAttribute("data-theme") === "dark" ? "dark" : "light");
+    const storedAccent = root.getAttribute("data-accent");
+    if (ACCENTS.includes(storedAccent as Accent)) setAccentState(storedAccent as Accent);
+  }, []);
+
+  const setAccent = useCallback((next: Accent) => {
+    setAccentState(next);
+    document.documentElement.setAttribute("data-accent", next);
+    try {
+      window.localStorage.setItem(ACCENT_STORAGE_KEY, next);
+    } catch {
+      // Ignore — the choice just won't survive a reload.
+    }
   }, []);
 
   const toggleTheme = useCallback(() => {
@@ -58,7 +87,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
-  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
+  return <ThemeContext.Provider value={{ theme, toggleTheme, accent, setAccent }}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme() {
