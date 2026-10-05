@@ -30,7 +30,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://portfolio2026-bbilgun.vercel.app"),
+  metadataBase: new URL("https://bbilgun-portfolio.vercel.app"),
   title: "Bilguun — Frontend & Mobile Developer",
   description:
     "Frontend and mobile developer in Ulaanbaatar. React and React Native front-ends for leasing and fintech apps at EverestSolution — several live on Google Play.",
