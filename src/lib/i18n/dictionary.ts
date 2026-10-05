@@ -31,7 +31,7 @@ export const dictionary = {
     "work.store.android": "Google Play",
     "work.store.web": "Launch coverage",
     "work.fgnkiosk.summary":
-      "4K touch kiosk for buying physical gold in person at Fine Gold Nation. Built the whole front-end: identity verification, QPay and card payment, and hardware-driven dispensing.",
+      "4K touch kiosk for buying physical gold in person at Fine Gold Nation. Built the entire front-end: staff login, the QPay payment flow, and the purchase screens. Where the brief left gaps, I designed several screens myself.",
     "work.eleasing.summary":
       "EverestSolution’s largest consumer loan product, up to ₮5,000,000 over 3 to 12 months. I built the React Native front-end: registration, loan request, contract signing and repayment tracking.",
     "work.niceleasing.summary":
@@ -59,7 +59,7 @@ export const dictionary = {
     "timeline.e3.title": "Sys&CoTech Club: President",
     "timeline.e3.focus": "LEADING THE UNIVERSITY TECH CLUB",
     "timeline.e3.body":
-      "Ran the club: the dev team, the DevHackathon event, and the club's own sites. A lot of the job was getting new members to ship their first real project.",
+      "Ran the club and led a team of about 30 people. Organized DevHackathon, open to university students from across Mongolia, along with smaller tech events throughout the year.",
     "timeline.e4.title": "EverestSolution",
     "timeline.e4.focus": "FRONTEND & MOBILE DEVELOPER",
     "timeline.e4.body":
@@ -67,7 +67,7 @@ export const dictionary = {
     "timeline.e5.title": "Sono Fintech",
     "timeline.e5.focus": "STUDENT PROGRAMME · LOAN COLLECTIONS",
     "timeline.e5.body":
-      "Paid summer internship on Sono's student programme, working the collections side of their loan app: contacting borrowers, chasing repayments and arranging extensions. I finished as the highest performing intern in the cohort. It is also where I learned how consumer lending works from the inside, which is the product I now build interfaces for.",
+      "Paid summer internship on Sono's student programme, working the collections side of their loan app. Reaching out to borrowers about their payments, helping them stay on schedule and arranging extensions when needed. I finished as the highest performing intern in the cohort. It is also where I learned how consumer lending works from the inside, which is the product I now build interfaces for.",
     "contact.title": "Open to frontend and mobile roles.",
     "contact.body":
       "Email is the fastest way to reach me. I read everything and reply within a day. Happy to talk about a role, a contract, or an app you want built properly.",
@@ -76,7 +76,8 @@ export const dictionary = {
     "footer.rights": "ALL RIGHTS RESERVED",
     "footer.built": "BUILT WITH NEXT · TAILWIND · FRAMER",
     "notfound.title": "Wrong turn.",
-    "notfound.body": "This road doesn't lead anywhere. The page you're looking for doesn't exist.",
+    "notfound.body":
+      "This road doesn't lead anywhere. The page you're looking for doesn't exist.",
     "notfound.cta": "BACK HOME",
   },
   mn: {
@@ -101,7 +102,7 @@ export const dictionary = {
     "work.store.android": "Google Play",
     "work.store.web": "Нээлтийн мэдээ",
     "work.fgnkiosk.summary":
-      "Fine Gold Nation-ы салбарт биет алт худалдаж авах 4K тач дэлгэцтэй киоск. Бүтэн интерфэйсийг нь бүтээсэн: хэрэглэгчийн баталгаажуулалт, QPay болон картын төлбөр, төхөөрөмжөөс шууд удирддаг олголт.",
+      "Fine Gold Nation-ы салбарт биет алт худалдаж авах 4K тач дэлгэцтэй киоск. Бүх интерфэйсийг нь бүтээсэн: ажилтны нэвтрэлт, QPay төлбөрийн урсгал, худалдан авалтын дэлгэцүүд. Даалгаварт тодорхойгүй байсан хэд хэдэн дэлгэцийг өөрөө зохиож гаргасан.",
     "work.eleasing.summary":
       "EverestSolution-ы хамгийн том зээлийн бүтээгдэхүүн. 3-аас 12 сарын хугацаатай ₮5,000,000 хүртэл. React Native интерфэйсийг нь бүтээсэн: бүртгэл, зээлийн хүсэлт, гэрээ байгуулалт, эргэн төлөлтийн хяналт.",
     "work.niceleasing.summary":
@@ -129,7 +130,7 @@ export const dictionary = {
     "timeline.e3.title": "Sys&CoTech клуб: Тэргүүн",
     "timeline.e3.focus": "ИХ СУРГУУЛИЙН ТЕХНОЛОГИЙН КЛУБЫГ УДИРДАН",
     "timeline.e3.body":
-      "Клубын хөгжүүлэлтийн баг, DevHackathon арга хэмжээ, клубын сайтуудыг удирдан ажиллуулж байсан. Ажлын нэг чухал хэсэг нь шинэ гишүүдийг анхны бодит төслөө гаргахад нь дэмжих байлаа.",
+      "Клубыг удирдаж, 30 орчим хүнтэй багийг ахалсан. Монгол даяарх их, дээд сургуулийн оюутнууд оролцох боломжтой DevHackathon-ыг зохион байгуулж, жилийн турш технологийн чиглэлийн жижиг арга хэмжээнүүд хийсэн.",
     "timeline.e4.title": "EverestSolution",
     "timeline.e4.focus": "FRONTEND & ГАР УТАСНЫ ХӨГЖҮҮЛЭГЧ",
     "timeline.e4.body":
@@ -137,7 +138,7 @@ export const dictionary = {
     "timeline.e5.title": "Соно Финтек",
     "timeline.e5.focus": "ОЮУТАН ХӨТӨЛБӨР · ЗЭЭЛИЙН ЭРГЭН ТӨЛӨЛТ",
     "timeline.e5.body":
-      "Соно аппын \"Оюутан хөтөлбөр\"-т цалинтай зуны дадлага хийж, зээлийн эргэн төлөлтийн талд ажилласан: зээлдэгчидтэй холбогдох, төлөлт хөөцөлдөх, хугацаа сунгах. Хөтөлбөрийн хамгийн өндөр үзүүлэлттэй дадлагажигч болсон. Хэрэглээний зээл дотроосоо хэрхэн ажилладгийг эндээс сурсан нь одоо интерфэйсийг нь хийж байгаа бүтээгдэхүүнд минь тусдаг.",
+      'Соно аппын "Оюутан хөтөлбөр"-т цалинтай зуны дадлага хийж, зээлийн эргэн төлөлтийн талд ажилласан: зээлдэгчидтэй холбогдож төлөлтөө хугацаанд нь хийхэд нь туслах, шаардлагатай үед хугацаа сунгах. Хөтөлбөрийн хамгийн өндөр үзүүлэлттэй дадлагажигч болсон. Хэрэглээний зээл дотроосоо хэрхэн ажилладгийг эндээс сурсан нь одоо интерфэйсийг нь хийж байгаа бүтээгдэхүүнд минь тусдаг.',
     "contact.title": "Frontend болон гар утасны ажлын байранд нээлттэй.",
     "contact.body":
       "Имэйлээр холбогдоход хамгийн хурдан. Бүх захидлыг уншиж, нэг өдрийн дотор хариу өгдөг. Ажлын байр, гэрээт ажил, эсвэл сайн хийгдсэн апп хэрэгтэй бол ярилцъя.",
@@ -146,7 +147,8 @@ export const dictionary = {
     "footer.rights": "БҮХ ЭРХ ХАМГААЛАГДСАН",
     "footer.built": "NEXT · TAILWIND · FRAMER-ЭЭР БҮТЭЭСЭН",
     "notfound.title": "Буруу эргэлт.",
-    "notfound.body": "Энэ зам хаашаа ч хүргэхгүй. Таны хайсан хуудас байхгүй байна.",
+    "notfound.body":
+      "Энэ зам хаашаа ч хүргэхгүй. Таны хайсан хуудас байхгүй байна.",
     "notfound.cta": "НҮҮР ХУУДАС РУУ",
   },
 } satisfies Record<Locale, Record<string, string>>;
