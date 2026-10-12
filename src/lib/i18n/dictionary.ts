@@ -73,7 +73,7 @@ export const dictionary = {
       "Email is the fastest way to reach me. I read everything and reply within a day. Happy to talk about a role, a contract, or an app you want built properly.",
     "contact.cta": "SEND EMAIL",
     "contact.or": "or find me on",
-    "footer.rights": "ALL RIGHTS RESERVED",
+    "footer.rights": "xbbilgun@gmail.com",
     "footer.built": "BUILT WITH NEXT · TAILWIND · FRAMER",
     "notfound.title": "Wrong turn.",
     "notfound.body":
@@ -104,11 +104,11 @@ export const dictionary = {
     "work.fgnkiosk.summary":
       "Fine Gold Nation-ы биет алт худалдаалдаг киоск. Хэрэглэгчийн интерфэйс-ийг бүрэн хариуцаж хийсэн. Өгөгдсөн дизайнд байгаагүй зарим нэг зайлшгүй шаардлагатай дэлгэцүүдийг өөрөө зохиомж гарган хийсэн (Staff login, бүтээгдэхүүн бүртгэх дэлгэцүүд г.м).",
     "work.eleasing.summary":
-      "EverestSolution-ийн хамгийн том лизингийн апп. Хуучин Xamarin (C#) аппыг компанийн нийтлэг React Native суурь дээр шинээр хийсэн: Expo Router, TypeScript, NativeWind, харин API, нэвтрэлт, төлөвийн удирдлага нь хуваалцсан нэгдсэн цөмөөс ирдэг. Хөрвүүлэлтийг хийж, интерфэйсийг энэ суурь дээр бүтээн App Store болон Google Play-д гаргасан.",
+      "PC Mall-ийн лизингийн апп. Хуучин Xamarin (C#) аппыг компанийн нийтлэг React Native суурь дээр шинээр хийсэн. Хөрвүүлэлтийг хийн App Store болон Google Play-д байршуулсан.",
     "work.niceleasing.summary":
-      "Хамгийн анх авч ажиллаж байсан бодит төсөл. Expo ашиглаагүй, React Native дээр TypeScript, NativeWind-оор хийсэн. Интерфэйсийг хийж, брэндийн өнгө төрхийг оруулан App Store болон Google Play-д гаргасан. Түүнээс хойш дараагийн аппуудаа энэ апп дээр суурилж хийсэн.",
+      "Хамгийн анх авч ажиллаж байсан бодит төсөл. Expo ашиглаагүй, React Native дээр TypeScript, NativeWind-ийг front дээр нь ашигласан. Интерфэйсийг нь шинээр бичиж, брэндийн өнгө төрхийг оруулан App Store болон Google Play-д гаргасан. Энэ аппын кодыг дараагийн ижил төстэй төслүүд дээр template болгон ашиглаж эхэлсэн.",
     "work.gate.summary":
-      "eLeasing-тэй ижил React Native суурь дээрх зээлийн апп. Интерфэйсийг хийж, App Store болон Google Play-д гаргасан.",
+      "NiceLeasing-тэй ижил React Native суурь дээрх зээлийн апп. Интерфэйсийг хийж, App Store болон Google Play-д гаргасан.",
     "work.entcredit.summary":
       "EntCredit-ийн зээлийн апп, мөн адил React Native суурь дээр. Интерфэйсийг хийж, App Store болон Google Play-д гаргасан.",
     "work.wallet.summary":
@@ -116,39 +116,37 @@ export const dictionary = {
     "work.onelend.summary":
       "Мөн адил React Native суурь дээрх зээлийн апп. Гарсны дараа шинэ боломжууд нэмж, засвар үйлчилгээг хийдэг.",
     "work.carzeel.summary":
-      "CAR zeel брэндийн зээлийн апп, мөн адил React Native суурь дээр. Интерфэйсийн шинэ боломжууд нэмж, тогтмол засварт оролцдог.",
+      "Мөн адил React Native суурьтэй. Шинэ feature-үүд нэмж, тогтмол засварт оролцдог.",
     "work.woow.summary":
-      "WooW pay зээлийн апп, мөн адил React Native суурь дээр. Шинэ боломжууд нэмж, гарсны дараах засвар үйлчилгээг хариуцдаг.",
+      "WooW pay зээлийн апп, мөн адил React Native суурь дээр. Шинэчлэлтүүд оруулж, гарсны дараах засвар үйлчилгээг хариуцдаг.",
     "work.fgn.summary":
-      "Fine Gold Nation. Гар утаснаасаа алт худалдан авах апп. Expo Router, NativeWind, Zustand ашигласан тусдаа кодын сан. Интерфэйсийн шинэ боломжууд нэмж, засвар үйлчилгээнд оролцдог.",
+      "Fine Gold Nation. Гар утаснаасаа алт худалдан авах апп. Expo Router, NativeWind, Zustand ашигласан тусдаа кодын сан. Интерфэйсийн шинэчлэлтүүд хийж, засвар үйлчилгээнд оролцдог.",
     "timeline.e1.title": "Шинжлэх Ухаан Технологийн Их Сургууль",
     "timeline.e1.focus": "КОМПЬЮТЕРИЙН УХААН, БАКАЛАВР",
     "timeline.e2.title": "Sys&CoTech клуб: Хөгжүүлэлтийн баг",
     "timeline.e2.focus": "ПОРТАЛ БОЛОН ХАКАТОНЫ САЙТ",
     "timeline.e2.body":
-      "Клубын портал болон DevHackathon-ы сайтыг React, Tailwind ашиглан бүтээсэн. Бусад хүн найддаг болсон миний анхны ажил.",
+      "Клубын портал болон Event-үүдийн веб хөгжүүлэлтэд оролцдог байсан.",
     "timeline.e3.title": "Sys&CoTech клуб: Тэргүүн",
-    "timeline.e3.focus": "ИХ СУРГУУЛИЙН ТЕХНОЛОГИЙН КЛУБЫГ УДИРДАН",
+    "timeline.e3.focus": "ИХ СУРГУУЛИЙН ТЕХНОЛОГИЙН КЛУБЫН ТЭРГҮҮН",
     "timeline.e3.body":
       "Клубыг удирдаж, 30 орчим хүнтэй багийг ахалсан. Монгол даяарх их, дээд сургуулийн оюутнууд оролцох боломжтой DevHackathon-ыг зохион байгуулж, жилийн турш технологийн чиглэлийн жижиг арга хэмжээнүүд хийсэн.",
     "timeline.e4.title": "EverestSolution",
     "timeline.e4.focus": "FRONTEND & ГАР УТАСНЫ ХӨГЖҮҮЛЭГЧ",
     "timeline.e4.body":
-      "Финтек болон лизингийн мобайл аппликейшнуудын хөгжүүлэлт, цаашдын арчилгаа дээр ажилладаг. Мөн хуучин Xamarin (C#) дээрх eLeasing аппыг React Native руу хөрвүүлсэн.",
+      "Финтек болон лизингийн мобайл аппликейшнуудын хөгжүүлэлт, цаашдын maintenance дээр ажилладаг. Мөн хуучин Xamarin (C#) дээрх апп-уудыг React Native руу хөрвүүлэлт хийдэг.",
     "timeline.e5.title": "Соно Финтек",
     "timeline.e5.focus": "ОЮУТАН ХӨТӨЛБӨР · ЗЭЭЛИЙН ЭРГЭН ТӨЛӨЛТ",
     "timeline.e5.body":
-      'Соно аппын "Оюутан хөтөлбөр"-т цалинтай зуны дадлага хийж, зээлийн эргэн төлөлтийн талд ажилласан: зээлдэгчидтэй холбогдож төлөлтөө хугацаанд нь хийхэд нь туслах, шаардлагатай үед хугацаа сунгах. Хөтөлбөрийн хамгийн өндөр үзүүлэлттэй дадлагажигч болсон. Хэрэглээний зээл дотроосоо хэрхэн ажилладгийг эндээс сурсан нь одоо интерфэйсийг нь хийж байгаа бүтээгдэхүүнд минь тусдаг.',
+      'Соно аппын "Оюутан хөтөлбөр"-т цалинтай зуны дадлага хийж, зээлдэгчтэй холбогдох, төлөлт хугацаанд нь хийхэд туслах, зээл сунгах зэргээр зээлийн эргэн төлөлт дээр ажилласан. Хөтөлбөрөө хамгийн өндөр үзүүлэлттэй дадлагажигчаар дуусгасан.',
     "contact.title": "Frontend болон гар утасны ажлын байранд нээлттэй.",
     "contact.body":
       "Имэйлээр холбогдоход хамгийн хурдан. Бүх захидлыг уншиж, нэг өдрийн дотор хариу өгдөг. Ажлын байр, гэрээт ажил, эсвэл сайн хийгдсэн апп хэрэгтэй бол ярилцъя.",
     "contact.cta": "ИМЭЙЛ БИЧИХ",
     "contact.or": "эсвэл эндээс",
-    "footer.rights": "БҮХ ЭРХ ХАМГААЛАГДСАН",
-    "footer.built": "NEXT · TAILWIND · FRAMER-ЭЭР БҮТЭЭСЭН",
-    "notfound.title": "Буруу эргэлт.",
-    "notfound.body":
-      "Энэ зам хаашаа ч хүргэхгүй. Таны хайсан хуудас байхгүй байна.",
+    "footer.built": "NEXT · TAILWIND · TYPESCRIPT",
+    "notfound.title": "Noot fouunndd.",
+    "notfound.body": "Хайсан хуудас нь байхгүй байх шиг байна өө bronny james.",
     "notfound.cta": "НҮҮР ХУУДАС РУУ",
   },
 } satisfies Record<Locale, Record<string, string>>;

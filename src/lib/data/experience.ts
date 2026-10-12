@@ -20,12 +20,12 @@ export const experience: Experience[] = [
     tags: ["React", "React Native", "TypeScript", "NativeWind"],
   },
   {
-    period: "2025.9 to 2026.6",
+    period: "2025.6 to 2026.6",
     titleKey: "timeline.e3.title",
     focusKey: "timeline.e3.focus",
     bodyKey: "timeline.e3.body",
     href: "https://syscotech.mn",
-    tags: ["React", "Tailwind CSS", "Leadership"],
+    tags: ["Time Management", "Communication", "Leadership"],
   },
   {
     period: "2023 to 2026",

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Space_Grotesk, Unbounded } from "next/font/google";
 import { LocaleProvider } from "@/lib/i18n";
-import { ThemeProvider, themeInitScript } from "@/components/ThemeProvider";
+import { DEFAULT_ACCENT, ThemeProvider, themeInitScript } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -61,6 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
+      data-accent={DEFAULT_ACCENT}
       suppressHydrationWarning
       className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} ${unbounded.variable}`}
     >

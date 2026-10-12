@@ -15,6 +15,10 @@ import { useEffect, useRef } from "react";
  * The car can be grabbed: dragging it along the road scrubs the page, and a
  * click without a drag honks (a hop and a flash of the headlights).
  *
+ * Easter egg: WASD or the arrow keys drive it, with throttle and coasting
+ * instead of the browser's stepped scroll; left/right swerve within the road,
+ * and H honks.
+ *
  * Drawn from a character map rather than an image so it retints with the theme
  * — the body is the live `--accent`, which visitors can change at runtime.
  */
@@ -71,6 +75,26 @@ const DRAG_SLOP = 3;
 /** How long the honk hop and headlight flash run. */
 const HONK_MS = 600;
 
+/** Keyboard driving: throttle per frame, coasting friction and top speed (px/frame). */
+const DRIVE_ACCEL = 2.2;
+const DRIVE_FRICTION = 0.9;
+const DRIVE_MAX = 36;
+/** How far the car can swerve from the centre line, and how hard it turns into it. */
+const LANE_MAX = 6;
+const STEER_DEG_PER_PX = 3;
+const MAX_STEER = 18;
+
+const DRIVE_KEYS: Record<string, "up" | "down" | "left" | "right"> = {
+  w: "up",
+  arrowup: "up",
+  s: "down",
+  arrowdown: "down",
+  a: "left",
+  arrowleft: "left",
+  d: "right",
+  arrowright: "right",
+};
+
 /** Sections that get a marker on the road, in page order. */
 const STOPS = ["about", "experience", "education", "projects", "contact"];
 
@@ -118,6 +142,9 @@ export function ScrollRoad() {
     let brakeTimer = 0;
     let lastPuff = 0;
     let honkTimer = 0;
+    /** Sideways offset from the centre line and the matching turn, from keyboard steering. */
+    let lane = 0;
+    let steer = 0;
     let drag: { pointerY: number; scrollY: number; moved: boolean } | null = null;
 
     /** Scroll progress (0–1) → the car's top edge on the road, in px. */
@@ -136,9 +163,10 @@ export function ScrollRoad() {
 
       // The -50% has to live in the inline transform: an inline `transform`
       // replaces the class's `-translate-x-1/2` outright rather than composing.
-      car.style.transform = `translate(-50%, ${carY}px)`;
+      car.style.transform = `translate(calc(-50% + ${lane}px), ${carY}px)`;
       // Sprite is drawn nose-up, so it turns round to drive down the page.
-      sprite.style.transform = `rotate(${facingUp ? 0 : 180}deg)`;
+      // Steering turns the nose toward the swerve, whichever way it faces.
+      sprite.style.transform = `rotate(${facingUp ? steer : 180 - steer}deg)`;
       trail.style.height = `${carMid}px`;
 
       // Place each section marker where the car will be when that section
@@ -233,7 +261,64 @@ export function ScrollRoad() {
       road.dataset.dragging = "false";
     };
 
+    /* -- keyboard driving (easter egg) ----------------------------------- */
+    const keys = new Set<string>();
+    let speed = 0;
+    let driveFrame = 0;
+
+    // Throttle feeds speed, friction bleeds it off, and the page scrolls by
+    // whatever's left; the scroll handler then does the car's usual rumble,
+    // exhaust and brake lights.
+    const drive = () => {
+      driveFrame = 0;
+      const throttle = (keys.has("down") ? 1 : 0) - (keys.has("up") ? 1 : 0);
+      speed = Math.max(-DRIVE_MAX, Math.min(DRIVE_MAX, (speed + throttle * DRIVE_ACCEL) * DRIVE_FRICTION));
+      if (Math.abs(speed) < 0.2) speed = 0;
+      if (speed) window.scrollBy({ top: speed, behavior: "instant" });
+
+      const target = ((keys.has("right") ? 1 : 0) - (keys.has("left") ? 1 : 0)) * LANE_MAX;
+      const pull = target - lane;
+      lane += pull * 0.18;
+      steer = Math.max(-MAX_STEER, Math.min(MAX_STEER, pull * STEER_DEG_PER_PX));
+      if (Math.abs(pull) < 0.05) {
+        lane = target;
+        steer = 0;
+      }
+
+      schedule();
+      if (keys.size || speed || steer) driveFrame = window.requestAnimationFrame(drive);
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+      const target = event.target as HTMLElement | null;
+      if (target?.isContentEditable || target?.closest?.("input, textarea, select")) return;
+      // The road is display:none below md, and so is the easter egg.
+      if (!road.getClientRects().length) return;
+
+      const key = event.key.toLowerCase();
+      if (key === "h") {
+        if (!event.repeat) honk();
+        return;
+      }
+      const control = DRIVE_KEYS[key];
+      if (!control) return;
+      event.preventDefault();
+      keys.add(control);
+      if (!driveFrame) driveFrame = window.requestAnimationFrame(drive);
+    };
+    const onKeyUp = (event: KeyboardEvent) => {
+      const control = DRIVE_KEYS[event.key.toLowerCase()];
+      if (control) keys.delete(control);
+    };
+    const releaseAll = () => keys.clear();
+
     update();
+    if (!reducedMotion) {
+      window.addEventListener("keydown", onKeyDown);
+      window.addEventListener("keyup", onKeyUp);
+      window.addEventListener("blur", releaseAll);
+    }
     car.addEventListener("pointerdown", onPointerDown);
     car.addEventListener("pointermove", onPointerMove);
     car.addEventListener("pointerup", onPointerUp);
@@ -248,6 +333,10 @@ export function ScrollRoad() {
       window.clearTimeout(idleTimer);
       window.clearTimeout(brakeTimer);
       window.clearTimeout(honkTimer);
+      if (driveFrame) window.cancelAnimationFrame(driveFrame);
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("keyup", onKeyUp);
+      window.removeEventListener("blur", releaseAll);
       car.removeEventListener("pointerdown", onPointerDown);
       car.removeEventListener("pointermove", onPointerMove);
       car.removeEventListener("pointerup", onPointerUp);

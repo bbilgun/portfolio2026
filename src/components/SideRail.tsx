@@ -1,6 +1,6 @@
 "use client";
 
-import type { MouseEvent } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { flushSync } from "react-dom";
 import { locales, useLocale } from "@/lib/i18n";
 import { useScrollSpy } from "@/lib/useScrollSpy";
@@ -90,11 +90,15 @@ export function SideRail() {
         {/* Fills the rail's dead space on tall screens, and says the one thing
             a visiting recruiter is looking for. */}
         <p className="mb-5 flex items-center gap-2 mono-label text-faint">
-          <span
-            className="h-1.5 w-1.5 rounded-full bg-emerald-400"
-            aria-hidden
-          />
-          {t("hero.status")}
+          {/* Live dot: a soft ring pings out from it. */}
+          <span className="relative flex h-1.5 w-1.5" aria-hidden>
+            <span className="absolute inset-0 rounded-full bg-emerald-400 opacity-60 motion-safe:animate-ping" />
+            <span className="relative h-1.5 w-1.5 rounded-full bg-emerald-400" />
+          </span>
+          <span>
+            {t("hero.status")}
+            <LocalTime />
+          </span>
         </p>
 
         <div className="flex items-center gap-5">
@@ -120,8 +124,65 @@ export function SideRail() {
             {/* <ThemeToggle /> — light mode is off, see ThemeProvider. */}
           </span>
         </div>
+
+        {FAVOURITE_SONG ? (
+          // Spotify's slim track player: cover, title, artist, play. Audio only.
+          // Hidden on short desktop windows, where it would crowd the nav.
+          <iframe
+            src={`https://open.spotify.com/embed/track/${FAVOURITE_SONG}?theme=0`}
+            title="Spotify"
+            width="100%"
+            height="80"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            className="mt-5 block max-w-sm rounded-xl border-0 [@media(min-width:1024px)_and_(max-height:779px)]:hidden"
+          />
+        ) : null}
       </div>
     </header>
+  );
+}
+
+/**
+ * Favourite song in the rail's mini player: the Spotify track ID, i.e. the
+ * part after /track/ in its share link. Empty hides the player.
+ */
+const FAVOURITE_SONG = "6dBUzqjtbnIa1TwYbyw5CM";
+
+const UB_TIME = new Intl.DateTimeFormat("en-GB", {
+  timeZone: "Asia/Ulaanbaatar",
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+});
+
+/**
+ * Current time in Ulaanbaatar, appended to the status line so visitors in
+ * other time zones can see whether it's working hours there. Client-only (the
+ * server's render would be stale and mismatch), ticking on each minute.
+ */
+function LocalTime() {
+  const [time, setTime] = useState<{ label: string; iso: string } | null>(null);
+
+  useEffect(() => {
+    let timer = 0;
+    const tick = () => {
+      const now = new Date();
+      setTime({ label: UB_TIME.format(now), iso: now.toISOString() });
+      // Re-arm for the start of the next minute, so the clock flips on time.
+      timer = window.setTimeout(tick, 60_000 - (now.getTime() % 60_000) + 50);
+    };
+    tick();
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  if (!time) return null;
+  return (
+    <>
+      {" · "}
+      <time dateTime={time.iso} className="tabular-nums">
+        {time.label}
+      </time>
+    </>
   );
 }
 

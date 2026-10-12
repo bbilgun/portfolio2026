@@ -1,5 +1,6 @@
 import { ContactSection } from "@/components/sections/ContactSection";
 import { CursorRibbon } from "@/components/CursorRibbon";
+import { CursorSpotlight } from "@/components/CursorSpotlight";
 import { ScrollRoad } from "@/components/ScrollRoad";
 import { Hero } from "@/components/Hero";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <>
       <RevealOnScroll />
+      <CursorSpotlight />
       <CursorRibbon />
       <ScrollRoad />
 

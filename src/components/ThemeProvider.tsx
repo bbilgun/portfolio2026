@@ -6,7 +6,8 @@ export type Theme = "light" | "dark";
 
 export const ACCENTS = ["purple", "red", "blue", "lime"] as const;
 export type Accent = (typeof ACCENTS)[number];
-const DEFAULT_ACCENT: Accent = "lime";
+/** First-visit accent; layout.tsx renders it onto <html> so it paints from the first frame. */
+export const DEFAULT_ACCENT: Accent = "blue";
 
 const STORAGE_KEY = "bilguun:theme";
 const ACCENT_STORAGE_KEY = "bilguun:accent";
