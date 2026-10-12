@@ -191,7 +191,8 @@
   }
 
   .row-card:hover::before,
-  .row-card:focus-within::before {
+  .row-card:focus-within::before,
+  .row-card.row-match::before {
     background: rgb(var(--surface-2) / 0.7);
     border-color: rgb(var(--line) / 0.08);
   }
@@ -308,6 +309,14 @@
 
   .hero-backdrop {
     opacity: calc(1 - var(--p, 0) * 1.5);
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 
   @media (prefers-reduced-motion: reduce) {

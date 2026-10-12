@@ -33,23 +33,23 @@ export const dictionary = {
     "work.fgnkiosk.summary":
       "4K touch kiosk for buying physical gold in person at Fine Gold Nation. Built the entire front-end: staff login, the QPay payment flow, and the purchase screens. Where the brief left gaps, I designed several screens myself.",
     "work.eleasing.summary":
-      "EverestSolution’s largest consumer loan product, up to ₮5,000,000 over 3 to 12 months. I migrated it from Xamarin (C#) to React Native and built the new front-end: registration, loan request, contract signing and repayment tracking.",
+      "EverestSolution’s largest leasing app, rebuilt from Xamarin (C#) on the company’s shared React Native base: Expo Router, TypeScript and NativeWind, with API, auth and app state coming from a shared core. I did the migration, built the front-end on that base and shipped it to the App Store and Google Play.",
     "work.niceleasing.summary":
-      "Consumer lending app under the Nice Leasing brand, ₮100,000 to ₮1,000,000 over 3 to 12 months. Its own identity and theming over the loan flow.",
+      "My first app at EverestSolution, built on React Native without Expo, using TypeScript and NativeWind. I built the front-end, gave it the brand’s own look and shipped it to the App Store and Google Play. I’ve used it as the base for my later apps since.",
     "work.gate.summary":
-      "Lending app with a shorter repayment window of 3 to 9 months. Front-end for the application flow, the contract step and the payment schedule.",
+      "Lending app on the same shared React Native base as eLeasing. I built the front-end on top of it and shipped it to the App Store and Google Play.",
     "work.entcredit.summary":
-      "Credit app for EntCredit, covering application through to disbursement, with the repayment calculator and contract screens.",
+      "Credit app for EntCredit, on the same shared React Native base. I built the front-end and shipped it to the App Store and Google Play.",
     "work.wallet.summary":
-      "Loan and repayment app for MonInvest. Request a loan, track the balance and read the payment history in one place.",
+      "Loan app for MonInvest, on the same shared React Native base. I built the front-end and shipped it to Google Play.",
     "work.onelend.summary":
-      "Consumer loan app in the same family. Contributed screens to the application flow and kept it maintained after release.",
+      "Consumer loan app on the same shared React Native base. I added features after release and keep it maintained.",
     "work.carzeel.summary":
-      "Consumer loan app under the CAR zeel brand. Contributed front-end features and ongoing fixes.",
+      "Loan app for the CAR zeel brand, on the same shared React Native base. I added front-end features and handle ongoing fixes.",
     "work.woow.summary":
-      "WooW pay consumer loan app. Contributed features and post-release maintenance.",
+      "WooW pay loan app, on the same shared React Native base. I added features and handle post-release maintenance.",
     "work.fgn.summary":
-      "Fine Gold Nation, an app for buying gold from your phone. Contributed front-end features and maintenance.",
+      "Fine Gold Nation’s app for buying gold from your phone. A separate codebase on Expo Router and NativeWind, with Zustand for state. I added front-end features and help maintain it.",
     "timeline.e1.title": "Mongolian University of Science and Technology",
     "timeline.e1.focus": "BSc COMPUTER SCIENCE",
     "timeline.e2.title": "Sys&CoTech Club: Development Team",
@@ -63,7 +63,7 @@ export const dictionary = {
     "timeline.e4.title": "EverestSolution",
     "timeline.e4.focus": "FRONTEND & MOBILE DEVELOPER",
     "timeline.e4.body":
-      "Building and maintaining mobile applications for fintech and leasing products. Responsible for migrating legacy Xamarin (C#) apps to React Native.",
+      "Building and maintaining mobile applications for fintech and leasing products. Migrated the legacy Xamarin (C#) eLeasing app to React Native.",
     "timeline.e5.title": "Sono Fintech",
     "timeline.e5.focus": "STUDENT PROGRAMME · LOAN COLLECTIONS",
     "timeline.e5.body":
@@ -104,23 +104,23 @@ export const dictionary = {
     "work.fgnkiosk.summary":
       "Fine Gold Nation-ы биет алт худалдаалдаг киоск. Хэрэглэгчийн интерфэйс-ийг бүрэн хариуцаж хийсэн. Өгөгдсөн дизайнд байгаагүй зарим нэг зайлшгүй шаардлагатай дэлгэцүүдийг өөрөө зохиомж гарган хийсэн (Staff login, бүтээгдэхүүн бүртгэх дэлгэцүүд г.м).",
     "work.eleasing.summary":
-      "Нэхэмжлэл явуулах, баталгаажуулах гэх мэт хэрэглэгчийн урсгал бүхий лизингийн бүтээгдэхүүн. Хуучин Xamarin (C#) аппыг React Native руу хөрвүүлсэн.",
+      "EverestSolution-ийн хамгийн том лизингийн апп. Хуучин Xamarin (C#) аппыг компанийн нийтлэг React Native суурь дээр шинээр хийсэн: Expo Router, TypeScript, NativeWind, харин API, нэвтрэлт, төлөвийн удирдлага нь хуваалцсан нэгдсэн цөмөөс ирдэг. Хөрвүүлэлтийг хийж, интерфэйсийг энэ суурь дээр бүтээн App Store болон Google Play-д гаргасан.",
     "work.niceleasing.summary":
-      "3-аас 12 сарын хугацаатай ₮100,000-аас ₮1,000,000 төгрөгийн зээл авах боломжтой финтек апп. Хамгийн анх авч ажиллаж байсан бодит төсөл.",
+      "Хамгийн анх авч ажиллаж байсан бодит төсөл. Expo ашиглаагүй, React Native дээр TypeScript, NativeWind-оор хийсэн. Интерфэйсийг хийж, брэндийн өнгө төрхийг оруулан App Store болон Google Play-д гаргасан. Түүнээс хойш дараагийн аппуудаа энэ апп дээр суурилж хийсэн.",
     "work.gate.summary":
-      "3-аас 9 сарын богино хугацаат зээлийн апп. Хүсэлтийн урсгал, гэрээний алхам, төлбөрийн хуваарийн интерфэйсийг хийсэн.",
+      "eLeasing-тэй ижил React Native суурь дээрх зээлийн апп. Интерфэйсийг хийж, App Store болон Google Play-д гаргасан.",
     "work.entcredit.summary":
-      "EntCredit-ийн зээлийн апп. Хүсэлтээс олголт хүртэл, эргэн төлөлтийн тооцоолуур болон гэрээний дэлгэцүүдтэй.",
+      "EntCredit-ийн зээлийн апп, мөн адил React Native суурь дээр. Интерфэйсийг хийж, App Store болон Google Play-д гаргасан.",
     "work.wallet.summary":
-      "MonInvest-ийн зээл, төлбөрийн апп. Зээл хүсэх, үлдэгдэл хянах, төлбөрийн түүхээ нэг дороос харах.",
+      "MonInvest-ийн зээлийн апп, мөн адил React Native суурь дээр. Интерфэйсийг хийж, Google Play-д гаргасан.",
     "work.onelend.summary":
-      "Мөн адил төрлийн зээлийн апп. Хүсэлтийн урсгалын дэлгэцүүдэд хувь нэмэр оруулж, гарсны дараах засвар үйлчилгээг хийсэн.",
+      "Мөн адил React Native суурь дээрх зээлийн апп. Гарсны дараа шинэ боломжууд нэмж, засвар үйлчилгээг хийдэг.",
     "work.carzeel.summary":
-      "CAR zeel брэндийн зээлийн апп. Интерфэйсийн шинэ боломжууд болон тогтмол засварт оролцсон.",
+      "CAR zeel брэндийн зээлийн апп, мөн адил React Native суурь дээр. Интерфэйсийн шинэ боломжууд нэмж, тогтмол засварт оролцдог.",
     "work.woow.summary":
-      "WooW pay зээлийн апп. Шинэ боломжууд нэмж, гарсны дараах засвар үйлчилгээг хариуцсан.",
+      "WooW pay зээлийн апп, мөн адил React Native суурь дээр. Шинэ боломжууд нэмж, гарсны дараах засвар үйлчилгээг хариуцдаг.",
     "work.fgn.summary":
-      "Fine Gold Nation. Гар утаснаасаа алт худалдан авах апп. Интерфэйсийн боломжууд болон засвар үйлчилгээнд оролцсон.",
+      "Fine Gold Nation. Гар утаснаасаа алт худалдан авах апп. Expo Router, NativeWind, Zustand ашигласан тусдаа кодын сан. Интерфэйсийн шинэ боломжууд нэмж, засвар үйлчилгээнд оролцдог.",
     "timeline.e1.title": "Шинжлэх Ухаан Технологийн Их Сургууль",
     "timeline.e1.focus": "КОМПЬЮТЕРИЙН УХААН, БАКАЛАВР",
     "timeline.e2.title": "Sys&CoTech клуб: Хөгжүүлэлтийн баг",
@@ -134,7 +134,7 @@ export const dictionary = {
     "timeline.e4.title": "EverestSolution",
     "timeline.e4.focus": "FRONTEND & ГАР УТАСНЫ ХӨГЖҮҮЛЭГЧ",
     "timeline.e4.body":
-      "Финтек болон лизингийн мобайл аппликейшнуудын хөгжүүлэлт, цаашдын арчилгаа дээр ажилладаг. Мөн хуучин Xamarin (C#) дээрх аппуудыг React Native руу хөрвүүлэх ажлыг гүйцэтгэдэг.",
+      "Финтек болон лизингийн мобайл аппликейшнуудын хөгжүүлэлт, цаашдын арчилгаа дээр ажилладаг. Мөн хуучин Xamarin (C#) дээрх eLeasing аппыг React Native руу хөрвүүлсэн.",
     "timeline.e5.title": "Соно Финтек",
     "timeline.e5.focus": "ОЮУТАН ХӨТӨЛБӨР · ЗЭЭЛИЙН ЭРГЭН ТӨЛӨЛТ",
     "timeline.e5.body":

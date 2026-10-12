@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { isFilterable, useTagFilter } from "@/components/TagFilter";
 
 /**
  * One section of the scrolling column. The sticky heading only shows below lg,
@@ -23,11 +24,34 @@ export function SectionShell({
   );
 }
 
-/** Accent-tinted capsule used for tech tags. */
-export function Tag({ children }: { children: ReactNode }) {
+const TAG = "rounded-full px-3 py-1 font-mono text-[11px] leading-5";
+
+/**
+ * Accent-tinted capsule used for tech tags. Tags that appear on a row are
+ * toggle buttons that filter the page (see TagFilter); the active one fills in.
+ */
+export function Tag({ children }: { children: string }) {
+  const { active, toggle } = useTagFilter();
+
+  if (!isFilterable(children)) {
+    return <li className={`${TAG} bg-[rgb(var(--accent)/0.1)] text-accent`}>{children}</li>;
+  }
+
+  const on = active === children;
   return (
-    <li className="rounded-full bg-[rgb(var(--accent)/0.1)] px-3 py-1 font-mono text-[11px] leading-5 text-accent">
-      {children}
+    <li>
+      <button
+        type="button"
+        aria-pressed={on}
+        onClick={() => toggle(children)}
+        className={`${TAG} block transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent)/0.6)] ${
+          on
+            ? "bg-[rgb(var(--accent))] text-[rgb(var(--accent-contrast))]"
+            : "bg-[rgb(var(--accent)/0.1)] text-accent hover:bg-[rgb(var(--accent)/0.2)]"
+        }`}
+      >
+        {children}
+      </button>
     </li>
   );
 }

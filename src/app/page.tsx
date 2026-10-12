@@ -9,6 +9,7 @@ import { EducationSection } from "@/components/sections/EducationSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { SiteFooter } from "@/components/SiteFooter";
+import { TagFilterProvider } from "@/components/TagFilter";
 
 export default function Home() {
   return (
@@ -31,12 +32,14 @@ export default function Home() {
           <SideRail />
 
           <main id="content" className="pt-16 lg:w-1/2 lg:py-24">
-            <AboutSection />
-            <ExperienceSection />
-            <EducationSection />
-            <ProjectsSection />
-            <ContactSection />
-            <SiteFooter />
+            <TagFilterProvider>
+              <AboutSection />
+              <ExperienceSection />
+              <EducationSection />
+              <ProjectsSection />
+              <ContactSection />
+              <SiteFooter />
+            </TagFilterProvider>
           </main>
         </div>
       </div>

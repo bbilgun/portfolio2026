@@ -2,6 +2,7 @@
 
 import { useLocale } from "@/lib/i18n";
 import { projects, type Project } from "@/lib/data/projects";
+import { rowFilterClass, useTagFilter } from "@/components/TagFilter";
 import { LinkArrow, SectionShell, Tag } from "./SectionShell";
 import { ProjectPreview } from "./ProjectPreview";
 
@@ -23,6 +24,7 @@ export function ProjectsSection() {
 /** Group label with a count and a hairline, then the rows. */
 function ProjectGroup({ label, items }: { label: string; items: Project[] }) {
   const { t } = useLocale();
+  const { active } = useTagFilter();
 
   return (
     <>
@@ -35,7 +37,7 @@ function ProjectGroup({ label, items }: { label: string; items: Project[] }) {
       <ol className="group/list space-y-12">
         {items.map((project) => (
           <li key={project.id} data-reveal>
-            <div className="row-card group/row grid gap-4 transition-opacity sm:grid-cols-8 sm:gap-6 lg:group-hover/list:opacity-50 lg:hover:!opacity-100">
+            <div className={`row-card group/row grid gap-4 transition-opacity duration-300 sm:grid-cols-8 sm:gap-6 ${rowFilterClass(active, project.tags)}`}>
               <div className="sm:col-span-2 sm:flex sm:items-center sm:justify-center">
                 <ProjectPreview icon={project.icon} shape={project.shape} />
               </div>

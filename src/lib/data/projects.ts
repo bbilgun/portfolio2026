@@ -45,7 +45,7 @@ export const projects: Project[] = [
     ios: "https://apps.apple.com/mn/app/eleasing/id1607020774",
     android: "https://play.google.com/store/apps/details?id=mn.everestsolution.eleasing",
     },
-    tags: ["React Native", "TypeScript", "REST APIs"],
+    tags: ["React Native", "Expo", "TypeScript", "NativeWind"],
   },
   {
     id: "niceleasing",
@@ -69,7 +69,7 @@ export const projects: Project[] = [
     ios: "https://apps.apple.com/mn/app/gate-mn/id1607856389",
     android: "https://play.google.com/store/apps/details?id=mn.everestsolution.gate",
     },
-    tags: ["React Native", "TypeScript"],
+    tags: ["React Native", "Expo", "TypeScript", "NativeWind"],
   },
   {
     id: "entcredit",
@@ -81,7 +81,7 @@ export const projects: Project[] = [
     ios: "https://apps.apple.com/mn/app/entcreditmn/id1602078955",
     android: "https://play.google.com/store/apps/details?id=mn.everestsolution.entcredit3",
     },
-    tags: ["React Native", "REST APIs"],
+    tags: ["React Native", "Expo", "TypeScript", "NativeWind"],
   },
   {
     id: "wallet",
@@ -92,7 +92,7 @@ export const projects: Project[] = [
     links: {
     android: "https://play.google.com/store/apps/details?id=mn.everestsolution.moninvest",
     },
-    tags: ["React Native", "TypeScript"],
+    tags: ["React Native", "Expo", "TypeScript", "NativeWind"],
   },
   {
     id: "onelend",
@@ -103,7 +103,7 @@ export const projects: Project[] = [
     links: {
     android: "https://play.google.com/store/apps/details?id=mn.everestsolution.onelend",
     },
-    tags: ["React Native"],
+    tags: ["React Native", "Expo", "NativeWind"],
   },
   {
     id: "carzeel",
@@ -115,7 +115,7 @@ export const projects: Project[] = [
     ios: "https://apps.apple.com/mn/app/car-zeel/id6749743494",
     android: "https://play.google.com/store/apps/details?id=mn.everestsolution.carzeel",
     },
-    tags: ["React Native"],
+    tags: ["React Native", "Expo", "NativeWind"],
   },
   {
     id: "woow",
@@ -127,7 +127,7 @@ export const projects: Project[] = [
     ios: "https://apps.apple.com/mn/app/woow-pay/id6757996273",
     android: "https://play.google.com/store/apps/details?id=mn.everestsolution.woowapp",
     },
-    tags: ["React Native"],
+    tags: ["React Native", "Expo", "NativeWind"],
   },
   {
     id: "fgn",
@@ -139,6 +139,6 @@ export const projects: Project[] = [
     ios: "https://apps.apple.com/mn/app/fgn-fine-gold-nation/id6759708229",
     android: "https://play.google.com/store/apps/details?id=mn.everestsolution.finegoldnation",
     },
-    tags: ["React Native"],
+    tags: ["React Native", "Expo", "Zustand"],
   },
 ];

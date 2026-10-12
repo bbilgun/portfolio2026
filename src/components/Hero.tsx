@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useLocale } from "@/lib/i18n";
 import { projects, type Project } from "@/lib/data/projects";
 import { AppIcon } from "./AppIcon";
@@ -229,6 +229,13 @@ export function Hero() {
             ))}
           </div>
         </div>
+
+        {/* Below lg the fan doesn't fit, so the same phones become a swipeable carousel. */}
+        <div className="hero-phones -mx-6 -mt-6 min-w-0 md:-mx-12 lg:hidden" aria-hidden>
+          <div className="rise" style={stagger(4)}>
+            <PhoneCarousel />
+          </div>
+        </div>
       </div>
 
       {/* Scroll cue: a mouse outline with a dot rolling down. */}
@@ -240,6 +247,116 @@ export function Hero() {
         <span className="h-2 w-1 animate-scroll-cue rounded-full bg-[rgb(var(--ink)/0.5)]" />
       </a>
     </section>
+  );
+}
+
+/** Carousel phones are scaled down from the fan's 190x390 so the hero still fits a phone screen. */
+const CAROUSEL_SCALE = 0.8;
+const CAROUSEL_W = 190 * CAROUSEL_SCALE;
+const CAROUSEL_H = 390 * CAROUSEL_SCALE;
+
+/**
+ * Touch take on the phone fan: a scroll-snap strip, so swiping is the browser's
+ * own, with a coverflow pass on top. Each phone's distance from the centre
+ * drives its scale, tilt and fade, written straight to style so scrolling
+ * never re-renders React (only the dots do, when the centred phone changes).
+ * Tapping a side phone brings it to the middle. Opens on the middle phone.
+ */
+function PhoneCarousel() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [current, setCurrent] = useState(1);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const cards = Array.from(track.children) as HTMLElement[];
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const centre = track.scrollLeft + track.clientWidth / 2;
+      let nearest = 0;
+      let nearestDistance = Infinity;
+
+      cards.forEach((card, index) => {
+        // Signed distance in card widths: -1 is one phone to the left.
+        const offset = (card.offsetLeft + card.offsetWidth / 2 - centre) / card.offsetWidth;
+        const distance = Math.min(Math.abs(offset), 1);
+        if (Math.abs(offset) < nearestDistance) {
+          nearestDistance = Math.abs(offset);
+          nearest = index;
+        }
+        if (still) return;
+        const tilt = Math.max(-1, Math.min(1, offset)) * 8;
+        card.style.transform = `scale(${1 - distance * 0.14}) rotate(${tilt}deg)`;
+        card.style.opacity = String(1 - distance * 0.45);
+      });
+
+      setCurrent(nearest);
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+
+    // Start centred on the middle phone, without an animated scroll.
+    const middle = cards[1];
+    track.scrollLeft = middle.offsetLeft + middle.offsetWidth / 2 - track.clientWidth / 2;
+    update();
+
+    track.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule, { passive: true });
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      track.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, []);
+
+  const centreOn = (card: HTMLElement) => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.scrollTo({
+      left: card.offsetLeft + card.offsetWidth / 2 - track.clientWidth / 2,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
+  };
+
+  return (
+    <div className="relative">
+      {/* Same accent glow as the fan. */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[rgb(var(--accent)/0.3)] blur-[70px]" />
+
+      <div
+        ref={trackRef}
+        className="no-scrollbar relative flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain py-6"
+        style={{ paddingInline: `calc(50% - ${CAROUSEL_W / 2}px)` }}
+      >
+        {PHONES.map((phone) => (
+          <div
+            key={phone.id}
+            onClick={(event) => centreOn(event.currentTarget)}
+            className="shrink-0 snap-center will-change-transform"
+            style={{ width: CAROUSEL_W, height: CAROUSEL_H }}
+          >
+            <div className="origin-top-left" style={{ transform: `scale(${CAROUSEL_SCALE})` }}>
+              <PhoneMock project={projects.find((project) => project.id === phone.id)!} card={phone.card} />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="flex justify-center gap-1.5">
+        {PHONES.map((phone, index) => (
+          <span
+            key={phone.id}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              index === current ? "w-5 bg-[rgb(var(--accent))]" : "w-1.5 bg-[rgb(var(--ink)/0.2)]"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
 
