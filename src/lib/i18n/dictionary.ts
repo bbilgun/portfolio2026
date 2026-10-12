@@ -69,8 +69,7 @@ export const dictionary = {
     "timeline.e5.body":
       "Paid summer internship on Sono’s student programme, working on loan collections: reaching out to borrowers, helping them pay on time and arranging loan extensions. Finished the programme as its highest-performing intern.",
     "contact.title": "Open to frontend and mobile roles.",
-    "contact.body":
-      "Email is the fastest way to reach me. I read everything and reply within a day. Happy to talk about a role, a contract, or an app you want built properly.",
+    "contact.body": "Looking for full-time and contract work.",
     "contact.cta": "SEND EMAIL",
     "contact.or": "or find me on",
     "footer.rights": "xbbilgun@gmail.com",
