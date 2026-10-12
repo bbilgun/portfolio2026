@@ -1,5 +1,7 @@
 "use client";
 
+import type { MouseEvent } from "react";
+import { flushSync } from "react-dom";
 import { locales, useLocale } from "@/lib/i18n";
 import { useScrollSpy } from "@/lib/useScrollSpy";
 import { MoonIcon, SOCIALS, SunIcon } from "./icons";
@@ -31,12 +33,17 @@ export function SideRail() {
       <div>
         {/* Hidden on desktop until the hero's name has flown in to this spot. */}
         <p id="rail-name" className="display text-[clamp(2.6rem,5vw,3.4rem)]">
-          <a href="#top" className="inline-block transition-opacity hover:opacity-80">
+          <a
+            href="#top"
+            className="inline-block transition-opacity hover:opacity-80"
+          >
             <NameMark />
           </a>
         </p>
 
-        <p className="mt-3 text-lg font-medium tracking-tight sm:text-xl">{t("hero.role")}</p>
+        <p className="mt-3 text-lg font-medium tracking-tight sm:text-xl">
+          {t("hero.role")}
+        </p>
 
         <p className="mt-4 max-w-xs leading-relaxed text-muted">
           {t("hero.tagline.lead")}
@@ -49,7 +56,10 @@ export function SideRail() {
               const active = activeId === section.id;
               return (
                 <li key={section.id}>
-                  <a href={`#${section.id}`} className="group flex items-center gap-4 py-1">
+                  <a
+                    href={`#${section.id}`}
+                    className="group flex items-center gap-4 py-1"
+                  >
                     {/* Dash grows and brightens for the active section. */}
                     <span
                       className={`h-px transition-all duration-300 ${
@@ -80,26 +90,29 @@ export function SideRail() {
         {/* Fills the rail's dead space on tall screens, and says the one thing
             a visiting recruiter is looking for. */}
         <p className="mb-5 flex items-center gap-2 mono-label text-faint">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden />
+          <span
+            className="h-1.5 w-1.5 rounded-full bg-emerald-400"
+            aria-hidden
+          />
           {t("hero.status")}
         </p>
 
         <div className="flex items-center gap-5">
-        <ul className="flex items-center gap-5">
-          {SOCIALS.map((social) => (
-            <li key={social.label}>
-              <a
-                href={social.href}
-                target={social.href.startsWith("http") ? "_blank" : undefined}
-                rel="noreferrer noopener"
-                aria-label={social.label}
-                className="block text-muted transition-colors hover:text-[rgb(var(--ink))]"
-              >
-                <social.icon />
-              </a>
-            </li>
-          ))}
-        </ul>
+          <ul className="flex items-center gap-5">
+            {SOCIALS.map((social) => (
+              <li key={social.label}>
+                <a
+                  href={social.href}
+                  target={social.href.startsWith("http") ? "_blank" : undefined}
+                  rel="noreferrer noopener"
+                  aria-label={social.label}
+                  className="block text-muted transition-colors hover:text-[rgb(var(--ink))]"
+                >
+                  <social.icon />
+                </a>
+              </li>
+            ))}
+          </ul>
 
           <span className="ml-auto flex items-center gap-2 lg:ml-4">
             <AccentToggle />
@@ -116,7 +129,11 @@ export function LocaleToggle() {
   const { locale, setLocale } = useLocale();
 
   return (
-    <div className="flex items-center rounded-full surface-sunken p-0.5" role="group" aria-label="Language">
+    <div
+      className="flex items-center rounded-full surface-sunken p-0.5"
+      role="group"
+      aria-label="Language"
+    >
       {locales.map((entry) => (
         <button
           key={entry.code}
@@ -125,7 +142,9 @@ export function LocaleToggle() {
           aria-pressed={locale === entry.code}
           title={entry.native}
           className={`rounded-full px-2 py-1.5 mono-label transition-colors ${
-            locale === entry.code ? "text-accent" : "text-faint hover:text-muted"
+            locale === entry.code
+              ? "text-accent"
+              : "text-faint hover:text-muted"
           }`}
         >
           {entry.label}
@@ -143,16 +162,69 @@ const ACCENT_SWATCHES: Record<Accent, string> = {
   lime: "rgb(196 240 66)",
 };
 
+/** How long the new accent takes to ripple out across the page. */
+const RIPPLE_MS = 1500;
+
 export function AccentToggle() {
   const { accent, setAccent } = useTheme();
 
+  /**
+   * The new accent spreads out from the clicked dot as a growing circle: a
+   * view transition snapshots the page, the accent swaps underneath, and the
+   * new snapshot is revealed through an expanding clip-path. Browsers without
+   * view transitions, and reduced motion, just swap instantly.
+   */
+  const pick = (next: Accent, event: MouseEvent<HTMLButtonElement>) => {
+    if (next === accent) return;
+    if (
+      !document.startViewTransition ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setAccent(next);
+      return;
+    }
+
+    const dot = event.currentTarget.getBoundingClientRect();
+    const x = dot.left + dot.width / 2;
+    const y = dot.top + dot.height / 2;
+    // Far enough to cover the corner furthest from the dot.
+    const radius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y),
+    );
+
+    // flushSync so the selected ring is already in the new snapshot.
+    const transition = document.startViewTransition(() =>
+      flushSync(() => setAccent(next)),
+    );
+    transition.ready.then(() => {
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${radius}px at ${x}px ${y}px)`,
+          ],
+        },
+        {
+          duration: RIPPLE_MS,
+          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+          pseudoElement: "::view-transition-new(root)",
+        },
+      );
+    });
+  };
+
   return (
-    <div className="flex items-center gap-0.5 rounded-full surface-sunken p-0.5" role="group" aria-label="Accent colour">
+    <div
+      className="flex items-center gap-0.5 rounded-full surface-sunken p-0.5"
+      role="group"
+      aria-label="Accent colour"
+    >
       {ACCENTS.map((entry) => (
         <button
           key={entry}
           type="button"
-          onClick={() => setAccent(entry)}
+          onClick={(event) => pick(entry, event)}
           aria-pressed={accent === entry}
           aria-label={entry}
           title={entry}
@@ -164,7 +236,10 @@ export function AccentToggle() {
                 ? "scale-110 shadow-[0_0_0_2px_rgb(var(--surface-2)),0_0_0_3.5px_currentColor]"
                 : "opacity-70 hover:opacity-100"
             }`}
-            style={{ backgroundColor: ACCENT_SWATCHES[entry], color: ACCENT_SWATCHES[entry] }}
+            style={{
+              backgroundColor: ACCENT_SWATCHES[entry],
+              color: ACCENT_SWATCHES[entry],
+            }}
             aria-hidden
           />
         </button>
@@ -180,7 +255,9 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+      aria-label={
+        theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
+      }
       className="flex h-8 w-8 items-center justify-center rounded-full surface-sunken text-muted transition-colors hover:text-[rgb(var(--ink))]"
     >
       {theme === "dark" ? <SunIcon /> : <MoonIcon />}

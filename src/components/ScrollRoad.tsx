@@ -12,6 +12,9 @@ import { useEffect, useRef } from "react";
  * scrolling stops the brake lights flash. The road behind it fills with the
  * accent, and a marker for each section lights up as the car passes it.
  *
+ * The car can be grabbed: dragging it along the road scrubs the page, and a
+ * click without a drag honks (a hop and a flash of the headlights).
+ *
  * Drawn from a character map rather than an image so it retints with the theme
  * — the body is the live `--accent`, which visitors can change at runtime.
  */
@@ -63,6 +66,11 @@ const BRAKE_MS = 450;
 /** Minimum gap between exhaust puffs. */
 const PUFF_MS = 70;
 
+/** Pointer travel before a press on the car counts as a drag, not a honk. */
+const DRAG_SLOP = 3;
+/** How long the honk hop and headlight flash run. */
+const HONK_MS = 600;
+
 /** Sections that get a marker on the road, in page order. */
 const STOPS = ["about", "experience", "education", "projects", "contact"];
 
@@ -109,6 +117,8 @@ export function ScrollRoad() {
     let idleTimer = 0;
     let brakeTimer = 0;
     let lastPuff = 0;
+    let honkTimer = 0;
+    let drag: { pointerY: number; scrollY: number; moved: boolean } | null = null;
 
     /** Scroll progress (0–1) → the car's top edge on the road, in px. */
     const roadY = (progress: number) => {
@@ -185,7 +195,49 @@ export function ScrollRoad() {
       schedule();
     };
 
+    /* -- drag to scrub, click to honk ------------------------------------- */
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.button !== 0) return;
+      event.preventDefault();
+      car.setPointerCapture(event.pointerId);
+      drag = { pointerY: event.clientY, scrollY: window.scrollY, moved: false };
+      road.dataset.dragging = "true";
+    };
+
+    // Dragging scrolls the page, and the scroll handler moves the car, so it
+    // stays under the pointer and still turns, puffs and brakes as usual.
+    const onPointerMove = (event: PointerEvent) => {
+      if (!drag) return;
+      const dy = event.clientY - drag.pointerY;
+      if (!drag.moved && Math.abs(dy) < DRAG_SLOP) return;
+      drag.moved = true;
+
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const travel = road.clientHeight - car.clientHeight - ROAD_PADDING * 2;
+      if (max <= 0 || travel <= 0) return;
+      window.scrollTo({ top: drag.scrollY + (dy / travel) * max, behavior: "instant" });
+    };
+
+    const honk = () => {
+      // Clear and reflow first, so a honk mid-honk restarts the animation.
+      road.dataset.honk = "false";
+      void road.offsetWidth;
+      road.dataset.honk = "true";
+      window.clearTimeout(honkTimer);
+      honkTimer = window.setTimeout(() => (road.dataset.honk = "false"), HONK_MS);
+    };
+
+    const onPointerUp = () => {
+      if (drag && !drag.moved) honk();
+      drag = null;
+      road.dataset.dragging = "false";
+    };
+
     update();
+    car.addEventListener("pointerdown", onPointerDown);
+    car.addEventListener("pointermove", onPointerMove);
+    car.addEventListener("pointerup", onPointerUp);
+    car.addEventListener("pointercancel", onPointerUp);
     // Section positions shift as fonts and images load, so re-place the markers.
     window.addEventListener("load", schedule);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -195,6 +247,11 @@ export function ScrollRoad() {
       if (frame) window.cancelAnimationFrame(frame);
       window.clearTimeout(idleTimer);
       window.clearTimeout(brakeTimer);
+      window.clearTimeout(honkTimer);
+      car.removeEventListener("pointerdown", onPointerDown);
+      car.removeEventListener("pointermove", onPointerMove);
+      car.removeEventListener("pointerup", onPointerUp);
+      car.removeEventListener("pointercancel", onPointerUp);
       window.removeEventListener("load", schedule);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", schedule);
@@ -207,6 +264,8 @@ export function ScrollRoad() {
       aria-hidden
       data-moving="false"
       data-braking="false"
+      data-honk="false"
+      data-dragging="false"
       className="group pointer-events-none fixed right-3 top-1/2 z-20 hidden h-[62vh] w-12 -translate-y-1/2 overflow-hidden rounded-full border border-[rgb(var(--line)/0.12)] bg-[rgb(var(--surface-2))] shadow-sm md:block"
     >
       {/* Road already driven, tinted with the accent. */}
@@ -247,13 +306,21 @@ export function ScrollRoad() {
         }}
       />
 
-      <div ref={carRef} className="absolute left-1/2 top-0 z-10 will-change-transform">
+      {/* The road ignores the pointer; only the car can be grabbed. */}
+      <div
+        ref={carRef}
+        className="pointer-events-auto absolute left-1/2 top-0 z-10 cursor-grab touch-none select-none will-change-transform group-data-[dragging=true]:cursor-grabbing"
+      >
         <div ref={spriteRef} className="transition-transform duration-300 ease-out">
           <div className="relative group-data-[moving=true]:animate-engine">
             {/* Headlight beam, ahead of the nose. */}
             <span className="absolute bottom-[calc(100%-4px)] left-1/2 h-[34px] w-[30px] -translate-x-1/2 bg-gradient-to-t from-[#ffe9a3]/50 to-transparent opacity-0 transition-opacity duration-200 [clip-path:polygon(30%_100%,70%_100%,100%_0,0_0)] group-data-[moving=true]:opacity-100" />
+            {/* Honk flash: a brighter beam that blinks twice. */}
+            <span className="absolute bottom-[calc(100%-4px)] left-1/2 h-[40px] w-[34px] -translate-x-1/2 bg-gradient-to-t from-[#ffe9a3]/90 to-transparent opacity-0 [clip-path:polygon(30%_100%,70%_100%,100%_0,0_0)] road-honk-flash" />
 
-            <CarSprite />
+            <div className="road-honk-hop">
+              <CarSprite />
+            </div>
 
             {/* Brake-light glow, behind the tail. */}
             <span className="absolute left-1/2 top-[calc(100%-8px)] h-[10px] w-[24px] -translate-x-1/2 rounded-full bg-[#ff3b3b] opacity-0 blur-[5px] transition-opacity duration-150 group-data-[braking=true]:opacity-90" />

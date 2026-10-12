@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { useLocale } from "@/lib/i18n";
 import { projects, type Project } from "@/lib/data/projects";
 import { AppIcon } from "./AppIcon";
@@ -220,11 +220,13 @@ export function Hero() {
             {PHONES.map((phone) => (
               <div
                 key={phone.id}
-                className={`absolute left-1/2 top-1/2 -ml-[95px] -mt-[195px] transition-[transform,opacity,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/fan:opacity-60 group-hover/fan:saturate-50 hover:z-20 hover:!translate-y-0 hover:!rotate-0 hover:!scale-[1.12] hover:!opacity-100 hover:!saturate-100 ${phone.pose}`}
+                className={`absolute left-1/2 top-1/2 -ml-[95px] -mt-[195px] transition-[transform,opacity,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/fan:opacity-60 group-hover/fan:saturate-50 hover:z-20 hover:!translate-y-0 hover:!rotate-0 hover:!scale-[1.12] hover:!opacity-100 hover:!saturate-100 has-[[data-dragging]]:z-30 ${phone.pose}`}
               >
-                <div className="animate-float" style={{ animationDelay: phone.delay }}>
-                  <PhoneMock project={projects.find((project) => project.id === phone.id)!} card={phone.card} />
-                </div>
+                <DraggablePhone>
+                  <div className="animate-float" style={{ animationDelay: phone.delay }}>
+                    <PhoneMock project={projects.find((project) => project.id === phone.id)!} card={phone.card} />
+                  </div>
+                </DraggablePhone>
               </div>
             ))}
           </div>
@@ -247,6 +249,118 @@ export function Hero() {
         <span className="h-2 w-1 animate-scroll-cue rounded-full bg-[rgb(var(--ink)/0.5)]" />
       </a>
     </section>
+  );
+}
+
+/**
+ * Spring-back for dragged fan phones. Same step as the cursor ribbon's nodes
+ * (velocity pulled toward rest, then damped by friction), but looser, so a
+ * released phone overshoots and wobbles home instead of gliding.
+ */
+const PHONE_SPRING = 0.12;
+const PHONE_FRICTION = 0.8;
+/** Tilt per px/frame of horizontal speed, so the phone leans into a drag. */
+const PHONE_TILT = 0.8;
+const PHONE_MAX_TILT = 20;
+
+/**
+ * Lets a fan phone be grabbed and thrown (fine pointers only). It sits between
+ * the pose wrapper and the float, so its transform never fights either.
+ */
+function DraggablePhone({ children }: { children: ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let x = 0;
+    let y = 0;
+    let vx = 0;
+    let vy = 0;
+    let frame = 0;
+    /** Pointer position minus phone offset at grab time, so it doesn't jump. */
+    let grab: { x: number; y: number } | null = null;
+
+    const render = () => {
+      const tilt = Math.max(-PHONE_MAX_TILT, Math.min(PHONE_MAX_TILT, vx * PHONE_TILT));
+      element.style.transform = `translate(${x}px, ${y}px) rotate(${tilt}deg)`;
+    };
+
+    const step = () => {
+      frame = 0;
+      if (grab) {
+        // Held still, the lean settles back upright.
+        vx *= 0.7;
+        vy *= 0.7;
+      } else {
+        vx = (vx - x * PHONE_SPRING) * PHONE_FRICTION;
+        vy = (vy - y * PHONE_SPRING) * PHONE_FRICTION;
+        x += vx;
+        y += vy;
+        if (Math.abs(x) + Math.abs(y) + Math.abs(vx) + Math.abs(vy) < 0.2) {
+          x = y = vx = vy = 0;
+          element.style.transform = "";
+          return;
+        }
+      }
+      render();
+      frame = window.requestAnimationFrame(step);
+    };
+    const start = () => {
+      if (!frame) frame = window.requestAnimationFrame(step);
+    };
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.button !== 0) return;
+      event.preventDefault();
+      element.setPointerCapture(event.pointerId);
+      grab = { x: event.clientX - x, y: event.clientY - y };
+      element.dataset.dragging = "";
+      start();
+    };
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (!grab) return;
+      const nextX = event.clientX - grab.x;
+      const nextY = event.clientY - grab.y;
+      // Smoothed pointer speed: drives the lean now and the throw on release.
+      vx = vx * 0.5 + (nextX - x) * 0.5;
+      vy = vy * 0.5 + (nextY - y) * 0.5;
+      x = nextX;
+      y = nextY;
+    };
+
+    const onPointerUp = () => {
+      if (!grab) return;
+      grab = null;
+      delete element.dataset.dragging;
+      if (still) {
+        x = y = vx = vy = 0;
+        element.style.transform = "";
+      }
+    };
+
+    element.addEventListener("pointerdown", onPointerDown);
+    element.addEventListener("pointermove", onPointerMove);
+    element.addEventListener("pointerup", onPointerUp);
+    element.addEventListener("pointercancel", onPointerUp);
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      element.removeEventListener("pointerdown", onPointerDown);
+      element.removeEventListener("pointermove", onPointerMove);
+      element.removeEventListener("pointerup", onPointerUp);
+      element.removeEventListener("pointercancel", onPointerUp);
+      element.style.transform = "";
+    };
+  }, []);
+
+  return (
+    <div ref={ref} className="cursor-grab touch-none select-none data-[dragging]:cursor-grabbing">
+      {children}
+    </div>
   );
 }
 
@@ -361,9 +475,25 @@ function PhoneCarousel() {
 }
 
 /** A stylised loan-app screen: header, balance card, chart, list, CTA. */
+/** Chart the phones open with; it reshuffles once someone touches a phone. */
+const DEFAULT_BARS = [40, 65, 50, 80, 60, 95, 75];
+
 function PhoneMock({ project, card }: { project: Project; card: string }) {
+  const [bars, setBars] = useState(DEFAULT_BARS);
+  // Bumped on each reshuffle; keying the bars on it replays their rise.
+  const [run, setRun] = useState(0);
+
+  /** New random heights (30-100%), regrowing one bar after another. */
+  const reshuffle = () => {
+    setBars(DEFAULT_BARS.map(() => Math.round(30 + Math.random() * 70)));
+    setRun((current) => current + 1);
+  };
+
   return (
-    <div className="h-[390px] w-[190px] rounded-[36px] bg-[#0d1020] p-[7px] shadow-[0_30px_60px_-20px_rgb(0_0_0/0.5)] ring-1 ring-white/10">
+    <div
+      onPointerEnter={reshuffle}
+      onPointerDown={reshuffle}
+      className="h-[390px] w-[190px] rounded-[36px] bg-[#0d1020] p-[7px] shadow-[0_30px_60px_-20px_rgb(0_0_0/0.5)] ring-1 ring-white/10">
       <div className="relative flex h-full flex-col overflow-hidden rounded-[30px] bg-[rgb(var(--surface))] px-3.5 pb-3.5 pt-8">
         <span className="absolute left-1/2 top-2.5 h-[18px] w-16 -translate-x-1/2 rounded-full bg-[#0d1020]" />
 
@@ -377,8 +507,12 @@ function PhoneMock({ project, card }: { project: Project; card: string }) {
           <span className="block h-1.5 w-10 rounded-full bg-white/50" />
           <span className="mt-2 block h-3.5 w-24 rounded-full bg-white/90" />
           <div className="mt-4 flex h-8 items-end gap-1">
-            {[40, 65, 50, 80, 60, 95, 75].map((height, index) => (
-              <span key={index} className="flex-1 rounded-sm bg-white/35" style={{ height: `${height}%` }} />
+            {bars.map((height, index) => (
+              <span
+                key={`${run}-${index}`}
+                className={`flex-1 rounded-sm bg-white/35 ${run ? "phone-bar-rise" : ""}`}
+                style={{ height: `${height}%`, animationDelay: `${index * 45}ms` }}
+              />
             ))}
           </div>
         </div>

@@ -274,6 +274,28 @@
     transform: none;
   }
 
+  /* Accent ripple (AccentToggle): the new snapshot is revealed by a growing
+     circle, so turn off the default cross-fade between the two. */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  /* Hero phone chart bars regrow from the baseline when reshuffled. */
+  @media (prefers-reduced-motion: no-preference) {
+    .phone-bar-rise {
+      transform-origin: bottom;
+      animation: phone-bar-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+  }
+
+  @keyframes phone-bar-rise {
+    from {
+      transform: scaleY(0.1);
+    }
+  }
+
   /* Exhaust pixel from the scroll car. ScrollRoad sets top, --dx and --dy. */
   .road-puff {
     position: absolute;
@@ -290,6 +312,39 @@
     to {
       opacity: 0;
       transform: translate(var(--dx), var(--dy)) scale(2.2);
+    }
+  }
+
+  /* Scroll car honk (ScrollRoad sets data-honk): a hop, and the headlights
+     flash twice. The hop is skipped for reduced motion. */
+  [data-honk="true"] .road-honk-flash {
+    animation: road-honk-flash 0.6s ease-out;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    [data-honk="true"] .road-honk-hop {
+      animation: road-honk-hop 0.45s ease-out;
+    }
+  }
+
+  @keyframes road-honk-hop {
+    30% {
+      transform: scale(1.2);
+    }
+    60% {
+      transform: scale(0.94);
+    }
+  }
+
+  @keyframes road-honk-flash {
+    0%,
+    40%,
+    100% {
+      opacity: 0;
+    }
+    15%,
+    60% {
+      opacity: 1;
     }
   }
 
