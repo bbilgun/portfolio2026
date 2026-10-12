@@ -26,6 +26,8 @@ const SECTION_IDS = SECTIONS.map((section) => section.id);
  */
 export function SideRail() {
   const { t } = useLocale();
+  const { accent } = useTheme();
+  const song = ACCENT_SONGS[accent] ?? FAVOURITE_SONG;
   const activeId = useScrollSpy(SECTION_IDS);
 
   return (
@@ -125,11 +127,13 @@ export function SideRail() {
           </span>
         </div>
 
-        {FAVOURITE_SONG ? (
+        {song ? (
           // Spotify's slim track player: cover, title, artist, play. Audio only.
           // Hidden on short desktop windows, where it would crowd the nav.
+          // Keyed on the song, so picking another accent loads its track.
           <iframe
-            src={`https://open.spotify.com/embed/track/${FAVOURITE_SONG}?theme=0`}
+            key={song}
+            src={`https://open.spotify.com/embed/track/${song}?theme=0`}
             title="Spotify"
             width="100%"
             height="80"
@@ -143,10 +147,16 @@ export function SideRail() {
 }
 
 /**
- * Favourite song in the rail's mini player: the Spotify track ID, i.e. the
- * part after /track/ in its share link. Empty hides the player.
+ * Songs for the rail's mini player: Spotify track IDs, i.e. the part after
+ * /track/ in a share link. Each accent can have its own song; accents not
+ * listed play FAVOURITE_SONG. An empty FAVOURITE_SONG hides the player for them.
  */
-const FAVOURITE_SONG = "6dBUzqjtbnIa1TwYbyw5CM";
+const FAVOURITE_SONG = "6dBUzqjtbnIa1TwYbyw5CM"; // Lovers Rock, TV Girl
+const ACCENT_SONGS: Partial<Record<Accent, string>> = {
+  purple: "3zksbXteOCeSusJ5Xltr3t",
+  blue: "3vQ4T78TTMOjQXGfXVKQJo",
+  lime: "2vWBUC9djv6BtiGlmKiQaH",
+};
 
 const UB_TIME = new Intl.DateTimeFormat("en-GB", {
   timeZone: "Asia/Ulaanbaatar",

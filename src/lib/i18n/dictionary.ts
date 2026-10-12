@@ -18,11 +18,11 @@ export const dictionary = {
     "nav.projects": "Projects",
     "hero.role": "FRONTEND & MOBILE DEVELOPER",
     "hero.tagline.lead":
-      "Focusing on building accessible, high-performance web and mobile interfaces.",
+      "Focused on building easy-to-use, high-performance web and mobile interfaces.",
     "about.p1":
-      "Graduated from MUST-SICT with a degree in Computer Science (2026). Joined the Sys&CoTech club in my second year, contributing to web development for various events and activities. In my final year, I was elected club President and led a team of 30+ members.",
+      "Graduated from MUST-SICT in Computer Science in 2026. Joined the Sys&CoTech club in my second year and started working on the web development for the events and activities it organized. In my final year I was elected club President and led a team of 30+ members.",
     "about.p2":
-      "Currently working at Everest Solution LLC, building user interfaces for fintech and leasing products (eLeasing, Nice Leasing, Gate, EntCreditMN, Wallet) using React, React Native, TypeScript, and Tailwind CSS.",
+      "Currently working at EverestSolution LLC on the user interfaces of fintech and leasing products (eLeasing, Nice Leasing, Gate, EntCreditMN, Wallet) with React, React Native, TypeScript and Tailwind CSS.",
     "about.p3":
       "Looking for my next team to keep shipping live products to real users while growing alongside experienced engineers.",
     "work.status.shipped": "SHIPPED",
@@ -31,53 +31,53 @@ export const dictionary = {
     "work.store.android": "Google Play",
     "work.store.web": "Launch coverage",
     "work.fgnkiosk.summary":
-      "4K touch kiosk for buying physical gold in person at Fine Gold Nation. Built the entire front-end: staff login, the QPay payment flow, and the purchase screens. Where the brief left gaps, I designed several screens myself.",
+      "Fine Gold Nation’s kiosk for buying physical gold. I was fully responsible for the user interface, and designed several essential screens the provided design didn’t cover myself (staff login, product registration screens and more).",
     "work.eleasing.summary":
-      "EverestSolution’s largest leasing app, rebuilt from Xamarin (C#) on the company’s shared React Native base: Expo Router, TypeScript and NativeWind, with API, auth and app state coming from a shared core. I did the migration, built the front-end on that base and shipped it to the App Store and Google Play.",
+      "PC Mall’s leasing app. I rebuilt the old Xamarin (C#) app on the company’s shared React Native base, handled the migration and published it to the App Store and Google Play.",
     "work.niceleasing.summary":
-      "My first app at EverestSolution, built on React Native without Expo, using TypeScript and NativeWind. I built the front-end, gave it the brand’s own look and shipped it to the App Store and Google Play. I’ve used it as the base for my later apps since.",
+      "The first real project I worked on. Built on React Native without Expo, using TypeScript and NativeWind on the front end. I rewrote its interface, gave it the brand’s look and shipped it to the App Store and Google Play. Its code became the template for later projects like it.",
     "work.gate.summary":
-      "Lending app on the same shared React Native base as eLeasing. I built the front-end on top of it and shipped it to the App Store and Google Play.",
+      "Lending app on the same React Native base as Nice Leasing. I built the interface and shipped it to the App Store and Google Play.",
     "work.entcredit.summary":
-      "Credit app for EntCredit, on the same shared React Native base. I built the front-end and shipped it to the App Store and Google Play.",
+      "EntCredit’s loan app, on the same React Native base. I built the interface and shipped it to the App Store and Google Play.",
     "work.wallet.summary":
-      "Loan app for MonInvest, on the same shared React Native base. I built the front-end and shipped it to Google Play.",
+      "MonInvest’s loan app, on the same React Native base. I built the interface and shipped it to Google Play.",
     "work.onelend.summary":
-      "Consumer loan app on the same shared React Native base. I added features after release and keep it maintained.",
+      "Loan app on the same React Native base. I add new features after release and handle its maintenance.",
     "work.carzeel.summary":
-      "Loan app for the CAR zeel brand, on the same shared React Native base. I added front-end features and handle ongoing fixes.",
+      "Also on the same React Native base. I add new features and take part in regular fixes.",
     "work.woow.summary":
-      "WooW pay loan app, on the same shared React Native base. I added features and handle post-release maintenance.",
+      "WooW pay loan app, on the same React Native base. I ship updates and handle post-release maintenance.",
     "work.fgn.summary":
-      "Fine Gold Nation’s app for buying gold from your phone. A separate codebase on Expo Router and NativeWind, with Zustand for state. I added front-end features and help maintain it.",
+      "Fine Gold Nation. An app for buying gold from your phone. A separate codebase using Expo Router, NativeWind and Zustand. I make interface updates and help maintain it.",
     "timeline.e1.title": "Mongolian University of Science and Technology",
     "timeline.e1.focus": "BSc COMPUTER SCIENCE",
     "timeline.e2.title": "Sys&CoTech Club: Development Team",
     "timeline.e2.focus": "PORTAL & HACKATHON SITE",
     "timeline.e2.body":
-      "Built the club portal and the DevHackathon event site with React and Tailwind. The first work of mine that other people depended on.",
+      "Worked on the web development for the club portal and its events.",
     "timeline.e3.title": "Sys&CoTech Club: President",
-    "timeline.e3.focus": "LEADING THE UNIVERSITY TECH CLUB",
+    "timeline.e3.focus": "PRESIDENT OF THE UNIVERSITY TECH CLUB",
     "timeline.e3.body":
-      "Ran the club and led a team of about 30 people. Organized DevHackathon, open to university students from across Mongolia, along with smaller tech events throughout the year.",
+      "Led the club and a team of about 30 people. Organized DevHackathon, open to university and college students from across Mongolia, and ran smaller tech events throughout the year.",
     "timeline.e4.title": "EverestSolution",
     "timeline.e4.focus": "FRONTEND & MOBILE DEVELOPER",
     "timeline.e4.body":
-      "Building and maintaining mobile applications for fintech and leasing products. Migrated the legacy Xamarin (C#) eLeasing app to React Native.",
+      "Developing and maintaining mobile apps for fintech and leasing products. Also migrating legacy Xamarin (C#) apps to React Native.",
     "timeline.e5.title": "Sono Fintech",
     "timeline.e5.focus": "STUDENT PROGRAMME · LOAN COLLECTIONS",
     "timeline.e5.body":
-      "Paid summer internship on Sono's student programme, working the collections side of their loan app. Reaching out to borrowers about their payments, helping them stay on schedule and arranging extensions when needed. I finished as the highest performing intern in the cohort. It is also where I learned how consumer lending works from the inside, which is the product I now build interfaces for.",
+      "Paid summer internship on Sono’s student programme, working on loan collections: reaching out to borrowers, helping them pay on time and arranging loan extensions. Finished the programme as its highest-performing intern.",
     "contact.title": "Open to frontend and mobile roles.",
     "contact.body":
       "Email is the fastest way to reach me. I read everything and reply within a day. Happy to talk about a role, a contract, or an app you want built properly.",
     "contact.cta": "SEND EMAIL",
     "contact.or": "or find me on",
     "footer.rights": "xbbilgun@gmail.com",
-    "footer.built": "BUILT WITH NEXT · TAILWIND · FRAMER",
-    "notfound.title": "Wrong turn.",
+    "footer.built": "NEXT · TAILWIND · TYPESCRIPT",
+    "notfound.title": "Noot fouunndd.",
     "notfound.body":
-      "This road doesn't lead anywhere. The page you're looking for doesn't exist.",
+      "Looks like the page you’re looking for doesn’t exist, bronny james.",
     "notfound.cta": "BACK HOME",
   },
   mn: {
@@ -85,7 +85,7 @@ export const dictionary = {
     "nav.experience": "Ажлын туршлага",
     "nav.education": "Боловсрол",
     "nav.contact": "Холбогдох",
-    "hero.status": "АЖИЛД НЭЭЛТТЭЙ · УЛААНБААТАР",
+    "hero.status": "OPEN TO WORK · УЛААНБААТАР",
     "nav.projects": "Төслүүд",
     "hero.role": "FRONTEND & MOBILE ХӨГЖҮҮЛЭГЧ",
     "hero.tagline.lead":
@@ -106,7 +106,7 @@ export const dictionary = {
     "work.eleasing.summary":
       "PC Mall-ийн лизингийн апп. Хуучин Xamarin (C#) аппыг компанийн нийтлэг React Native суурь дээр шинээр хийсэн. Хөрвүүлэлтийг хийн App Store болон Google Play-д байршуулсан.",
     "work.niceleasing.summary":
-      "Хамгийн анх авч ажиллаж байсан бодит төсөл. Expo ашиглаагүй, React Native дээр TypeScript, NativeWind-ийг front дээр нь ашигласан. Интерфэйсийг нь шинээр бичиж, брэндийн өнгө төрхийг оруулан App Store болон Google Play-д гаргасан. Энэ аппын кодыг дараагийн ижил төстэй төслүүд дээр template болгон ашиглаж эхэлсэн.",
+      "Хамгийн анх авч ажиллаж байсан бодит төсөл. Expo ашиглаагүй, React Native, TypeScript, NativeWind-ийг front дээр нь ашигласан. Интерфэйсийг нь шинээр бичиж, брэндийн өнгө төрхийг оруулан App Store болон Google Play-д гаргасан. Энэ аппын кодыг дараагийн ижил төстэй төслүүд дээр template болгон ашиглаж эхэлсэн.",
     "work.gate.summary":
       "NiceLeasing-тэй ижил React Native суурь дээрх зээлийн апп. Интерфэйсийг хийж, App Store болон Google Play-д гаргасан.",
     "work.entcredit.summary":
@@ -114,7 +114,7 @@ export const dictionary = {
     "work.wallet.summary":
       "MonInvest-ийн зээлийн апп, мөн адил React Native суурь дээр. Интерфэйсийг хийж, Google Play-д гаргасан.",
     "work.onelend.summary":
-      "Мөн адил React Native суурь дээрх зээлийн апп. Гарсны дараа шинэ боломжууд нэмж, засвар үйлчилгээг хийдэг.",
+      "Мөн адил React Native суурь дээрх зээлийн апп. Гарсны дараа интерфэйс сайжруулж, засвар үйлчилгээнд оролцсон.",
     "work.carzeel.summary":
       "Мөн адил React Native суурьтэй. Шинэ feature-үүд нэмж, тогтмол засварт оролцдог.",
     "work.woow.summary":
@@ -139,11 +139,11 @@ export const dictionary = {
     "timeline.e5.focus": "ОЮУТАН ХӨТӨЛБӨР · ЗЭЭЛИЙН ЭРГЭН ТӨЛӨЛТ",
     "timeline.e5.body":
       'Соно аппын "Оюутан хөтөлбөр"-т цалинтай зуны дадлага хийж, зээлдэгчтэй холбогдох, төлөлт хугацаанд нь хийхэд туслах, зээл сунгах зэргээр зээлийн эргэн төлөлт дээр ажилласан. Хөтөлбөрөө хамгийн өндөр үзүүлэлттэй дадлагажигчаар дуусгасан.',
-    "contact.title": "Frontend болон гар утасны ажлын байранд нээлттэй.",
-    "contact.body":
-      "Имэйлээр холбогдоход хамгийн хурдан. Бүх захидлыг уншиж, нэг өдрийн дотор хариу өгдөг. Ажлын байр, гэрээт ажил, эсвэл сайн хийгдсэн апп хэрэгтэй бол ярилцъя.",
+    "contact.title": "Get in touch.",
+    "contact.body": "Бүтэн цагийн ажил болон гэрээт ажил хайж байна.",
     "contact.cta": "ИМЭЙЛ БИЧИХ",
     "contact.or": "эсвэл эндээс",
+    "footer.rights": "xbbilgun@gmail.com",
     "footer.built": "NEXT · TAILWIND · TYPESCRIPT",
     "notfound.title": "Noot fouunndd.",
     "notfound.body": "Хайсан хуудас нь байхгүй байх шиг байна өө bronny james.",
