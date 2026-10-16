@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useLocale } from "@/lib/i18n";
 import { experience } from "@/lib/data/experience";
+import { LogoMark } from "@/components/LogoMark";
 import { rowFilterClass, useTagFilter } from "@/components/TagFilter";
 import { LinkArrow, SectionShell, Tag } from "./SectionShell";
 
@@ -85,8 +86,9 @@ export function ExperienceSection() {
               className="absolute -left-8 top-[9px] h-[7px] w-[7px] bg-[rgb(var(--ink)/0.25)] transition-[background-color,box-shadow] duration-300 data-[lit=true]:bg-[rgb(var(--accent))] data-[lit=true]:shadow-[0_0_6px_rgb(var(--accent))]"
             />
             <div className={`row-card group/row grid gap-2 transition-opacity duration-300 sm:grid-cols-8 sm:gap-6 ${rowFilterClass(active, entry.tags)}`}>
-              <header className="mono-label mt-1 text-faint sm:col-span-2">
-                {entry.period}
+              <header className="flex items-center gap-3 sm:col-span-2 sm:flex-col sm:items-start">
+                <span className="mono-label mt-1 text-faint">{entry.period}</span>
+                {entry.logo && <LogoMark src={entry.logo} />}
               </header>
 
               <div className="sm:col-span-6">

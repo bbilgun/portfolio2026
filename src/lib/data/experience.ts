@@ -7,6 +7,8 @@ export type Experience = {
   bodyKey: TranslationKey;
   /** Where the organisation lives, when it has a site worth linking. */
   href?: string;
+  /** Logo under /public, set inline before the title. */
+  logo?: string;
   tags: string[];
 };
 
@@ -17,6 +19,7 @@ export const experience: Experience[] = [
     focusKey: "timeline.e4.focus",
     bodyKey: "timeline.e4.body",
     href: "https://everestsolution.mn",
+    logo: "/experience/everest.png",
     tags: ["React", "React Native", "TypeScript", "NativeWind"],
   },
   {
@@ -25,6 +28,7 @@ export const experience: Experience[] = [
     focusKey: "timeline.e3.focus",
     bodyKey: "timeline.e3.body",
     href: "https://syscotech.mn",
+    logo: "/experience/syscotech.png",
     tags: ["Time Management", "Communication", "Leadership"],
   },
   {
@@ -33,6 +37,7 @@ export const experience: Experience[] = [
     focusKey: "timeline.e2.focus",
     bodyKey: "timeline.e2.body",
     href: "https://syscotech.mn",
+    logo: "/experience/syscotech.png",
     tags: ["React", "Tailwind CSS", "Git"],
   },
   {
@@ -41,6 +46,7 @@ export const experience: Experience[] = [
     focusKey: "timeline.e5.focus",
     bodyKey: "timeline.e5.body",
     href: "https://sono.mn",
+    logo: "/experience/sono.png",
     tags: ["Fintech", "Collections"],
   },
 ];
