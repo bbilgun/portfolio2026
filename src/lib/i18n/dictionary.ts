@@ -78,6 +78,8 @@ export const dictionary = {
     "notfound.body":
       "Looks like the page you’re looking for doesn’t exist, bronny james.",
     "notfound.cta": "BACK HOME",
+    "mode.work": "Work",
+    "mode.personal": "Personal",
   },
   mn: {
     "nav.about": "Танилцуулга",
@@ -147,6 +149,8 @@ export const dictionary = {
     "notfound.title": "Noot fouunndd.",
     "notfound.body": "Хайсан хуудас нь байхгүй байх шиг байна өө bronny james.",
     "notfound.cta": "НҮҮР ХУУДАС РУУ",
+    "mode.work": "Ажил",
+    "mode.personal": "Хувийн",
   },
 } satisfies Record<Locale, Record<string, string>>;
 

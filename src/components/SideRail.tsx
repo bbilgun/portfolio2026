@@ -151,7 +151,7 @@ export function SideRail() {
  * /track/ in a share link. Each accent can have its own song; accents not
  * listed play FAVOURITE_SONG. An empty FAVOURITE_SONG hides the player for them.
  */
-const FAVOURITE_SONG = "6dBUzqjtbnIa1TwYbyw5CM"; // Lovers Rock, TV Girl
+export const FAVOURITE_SONG = "6dBUzqjtbnIa1TwYbyw5CM"; // Lovers Rock, TV Girl
 const ACCENT_SONGS: Partial<Record<Accent, string>> = {
   purple: "3zksbXteOCeSusJ5Xltr3t",
   blue: "3vQ4T78TTMOjQXGfXVKQJo",
